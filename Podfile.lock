@@ -1,0 +1,28 @@
+PODS:
+  - Alamofire (4.5.1)
+  - AVOSCloud (7.3.2)
+  - JDStatusBarNotification (1.5.6)
+  - Ji (2.1.0):
+    - Ji/Ji (= 2.1.0)
+  - Ji/Ji (2.1.0):
+    - Ji/Ji-libxml
+  - Ji/Ji-libxml (2.1.0)
+  - RadioButton (1.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - AVOSCloud
+  - JDStatusBarNotification
+  - Ji
+  - RadioButton
+
+SPEC CHECKSUMS:
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  AVOSCloud: 8a18125408bac1fc73c19ceb897db4ec4e0e6044
+  JDStatusBarNotification: d5829a8f2f291b23b8a54b87fac8bf2549945a2f
+  Ji: 21946da4e13425485ddd424edfaeeced0d80ad28
+  RadioButton: 7ef053baf6ff0e7f9e777016c28e9ba4e330edba
+
+PODFILE CHECKSUM: 4f763e1f1845d815e5a767c85577a18b26865083
+
+COCOAPODS: 1.3.1
