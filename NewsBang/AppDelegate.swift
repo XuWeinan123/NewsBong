@@ -7,15 +7,18 @@
 //
 
 import UIKit
+import AVOSCloud
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        AVOSCloud.setApplicationId("h4BjHB5TNPclSm5NSRTBjq1s-gzGzoHsz", clientKey: "F4sV2Bc1gpkVT5PxwhljEBni")
+        login()
+        //AVOSCloud.setApplicationId("QvjVufzK2Q3EGAUKEUwKa3HM-gzGzoHsz", clientKey: "fbNdi3mj1ABNjIxcxWCFAhtT")
         return true
     }
 
@@ -40,7 +43,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
+    func login(){
+        //获取UserDefaults中储存的Key为username的值
+        let username:String? = UserDefaults.standard.string(forKey: "username")
+        if username != nil{
+            print("已有默认用户")
+        }else{
+            print("没有用户")
+        }
+        let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let myTabBar = storyboard.instantiateViewController(withIdentifier: "TabBar") as! TabBarVC
+        window?.rootViewController = myTabBar
+    }
 }
 
