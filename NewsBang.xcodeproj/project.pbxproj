@@ -23,6 +23,9 @@
 		E148B4F8200658C600C282FA /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E148B4F7200658C600C282FA /* SignInVC.swift */; };
 		E148B4FA2006FE6300C282FA /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E148B4F92006FE6300C282FA /* SignUpVC.swift */; };
 		E148B4FC20072C9800C282FA /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E148B4FB20072C9800C282FA /* TabBarVC.swift */; };
+		E1518E8E2010D9F1001F3EE0 /* GradeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1518E8D2010D9F1001F3EE0 /* GradeCollectionView.swift */; };
+		E1518E902010DB2F001F3EE0 /* GradeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1518E8F2010DB2F001F3EE0 /* GradeCollectionCell.swift */; };
+		E1518E922010F702001F3EE0 /* SwiftNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1518E912010F702001F3EE0 /* SwiftNotice.swift */; };
 		E16B1F532007B43A00CCAE09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E16B1F522007B43A00CCAE09 /* Assets.xcassets */; };
 		E16B1F552008864500CCAE09 /* MyCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16B1F542008864500CCAE09 /* MyCollectionVC.swift */; };
 		E16B1F572008B52B00CCAE09 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16B1F562008B52B00CCAE09 /* CommentCell.swift */; };
@@ -63,6 +66,9 @@
 		E148B4F7200658C600C282FA /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		E148B4F92006FE6300C282FA /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		E148B4FB20072C9800C282FA /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
+		E1518E8D2010D9F1001F3EE0 /* GradeCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeCollectionView.swift; sourceTree = "<group>"; };
+		E1518E8F2010DB2F001F3EE0 /* GradeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeCollectionCell.swift; sourceTree = "<group>"; };
+		E1518E912010F702001F3EE0 /* SwiftNotice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftNotice.swift; sourceTree = "<group>"; };
 		E16B1F522007B43A00CCAE09 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E16B1F542008864500CCAE09 /* MyCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionVC.swift; sourceTree = "<group>"; };
 		E16B1F562008B52B00CCAE09 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
@@ -187,6 +193,7 @@
 				E1D5C8BB200F251200F58364 /* 教师名片 */,
 				E1D5C8B7200F13CC00F58364 /* 番茄钟 */,
 				E1F287392010583300F12E2F /* 课程日历 */,
+				E1518E912010F702001F3EE0 /* SwiftNotice.swift */,
 			);
 			path = NewsBang;
 			sourceTree = "<group>";
@@ -215,6 +222,8 @@
 			isa = PBXGroup;
 			children = (
 				E1F2873A2010586B00F12E2F /* CourseCalendarVC.swift */,
+				E1518E8D2010D9F1001F3EE0 /* GradeCollectionView.swift */,
+				E1518E8F2010DB2F001F3EE0 /* GradeCollectionCell.swift */,
 			);
 			path = "课程日历";
 			sourceTree = "<group>";
@@ -371,11 +380,13 @@
 				E1757764200C8AC6008F7CA9 /* TeacherCardDetailVC.swift in Sources */,
 				E1757759200B5B2D008F7CA9 /* TeacherCardVC.swift in Sources */,
 				E12A872B2003467F00701683 /* ViewPager.swift in Sources */,
+				E1518E922010F702001F3EE0 /* SwiftNotice.swift in Sources */,
 				E1C8866A200307A200AA7F5A /* ViewController.swift in Sources */,
 				E1C88668200307A200AA7F5A /* AppDelegate.swift in Sources */,
 				E1757760200C5AF5008F7CA9 /* ImageHelper.swift in Sources */,
 				E12EB81A2003C6B2003CB005 /* EducationalInfoVC.swift in Sources */,
 				E1757757200B4F25008F7CA9 /* ToolsCollectionCell.swift in Sources */,
+				E1518E902010DB2F001F3EE0 /* GradeCollectionCell.swift in Sources */,
 				E12A872D200348F300701683 /* ViewPagerContainer.swift in Sources */,
 				E12A872F2003544500701683 /* NavViewController.swift in Sources */,
 				E12A87292003450400701683 /* ISViewPagerContainer.swift in Sources */,
@@ -386,6 +397,7 @@
 				E1F2873B2010586B00F12E2F /* CourseCalendarVC.swift in Sources */,
 				E1757761200C5AF5008F7CA9 /* ImageVIewExtension.swift in Sources */,
 				E1D5C8BD200F2ADF00F58364 /* TomatoClockVC.swift in Sources */,
+				E1518E8E2010D9F1001F3EE0 /* GradeCollectionView.swift in Sources */,
 				E12F3B702005EED4002AEC1F /* PersonalCenterVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

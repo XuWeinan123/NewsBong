@@ -62,7 +62,7 @@ class ArticlePageVC: UIViewController,UIWebViewDelegate {
         let jiDoc = Ji(htmlURL: URL(string: url)!)
         let titleNode = jiDoc?.xPath("//body/div[1]/div[4]/div[1]/div/div[2]/form/h2")?.first
         name = (titleNode?.content)!
-        let webStringNode = jiDoc?.xPath("//*[@id=\"vsb_content\"]")?.first
+        let webStringNode = jiDoc?.xPath("//body/div[1]/div[4]/div[1]/div/div[2]/form/div")?.first
         if let webStringNode = webStringNode{
             webString = String(describing: webStringNode)
             webString = webString.replacingOccurrences(of: "src=\"/__local", with: "src=\"http://sjic.hust.edu.cn/__local")

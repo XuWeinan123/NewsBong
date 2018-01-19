@@ -41,9 +41,11 @@ class ToolsCollectionVC: UIViewController,UICollectionViewDelegate,UICollectionV
         toolImage.append(UIImage(named: "师资队伍")!)
         toolImage.append(UIImage(named: "番茄钟🍅")!)
         toolImage.append(UIImage(named: "缺省头像")!)
+        toolImage.append(UIImage(named: "红包口令")!)
         toolName.append("教师名片")
-        toolName.append("番茄钟🍅")
+        toolName.append("番茄时钟")
         toolName.append("课程日历")
+        toolName.append("红包口令")
     }
 
     override func didReceiveMemoryWarning() {
@@ -78,6 +80,10 @@ class ToolsCollectionVC: UIViewController,UICollectionViewDelegate,UICollectionV
             let courseCalendarVC = self.storyboard?.instantiateViewController(withIdentifier: "CourseCalendar") as! CourseCalendarVC
             courseCalendarVC.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(courseCalendarVC, animated: true)
+        case 3:
+            let pasteboard = UIPasteboard.general
+            pasteboard.string = "nKjLQL83bX"
+            self.noticeInfo("复制成功", autoClear: true, autoClearTime: 1)
         default: break
         }
     }

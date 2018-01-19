@@ -129,9 +129,13 @@ class CollegeNewsVC: UITableViewController {
                         self.tableView.reloadData()
                         break
                     }else{
+                        //新网页会重复三篇，所以……
                         if i<=3 {continue}
                         var str = (titleNode?.attributes["href"]) as! String
+                        print("之前:\(str)")
                         str.removeFirst();str.removeFirst();str.removeFirst();
+                        str = str.replacingOccurrences(of: "../", with: "")
+                        print("之后:\(str)")
                         articleItems.append(ArticleItems.init(name: (titleNode?.content)!, date: (dateNode?.content)!, url: "http://sjic.hust.edu.cn/\(str)"))
                     }
                 }

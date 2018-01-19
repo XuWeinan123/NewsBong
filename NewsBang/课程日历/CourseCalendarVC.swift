@@ -12,16 +12,150 @@ import EventKit
 class CourseCalendarVC: UIViewController {
     
     var startDate:Date!
+    var switchTime:Int!
     var courseItems = [CourseItem]()
+    var semester = "第一学期"
+    var grade = gradeChoose.unchoose
+    var major = majorChoose.unchoose
 
+    @IBOutlet weak var seniorBtn: UIButton!
+    @IBOutlet weak var juniorBtn: UIButton!
+    @IBOutlet weak var sophomoreBtn: UIButton!
+    @IBOutlet weak var freshmanBtn: UIButton!
+    
+    @IBOutlet weak var xinwenBtn: UIButton!
+    @IBOutlet weak var guangdianBtn: UIButton!
+    @IBOutlet weak var guanggaoBtn: UIButton!
+    @IBOutlet weak var chuanboBtn: UIButton!
+    @IBOutlet weak var bozhuBtn: UIButton!
+    
+    var freshmanYear = 2018
     override func viewDidLoad() {
         super.viewDidLoad()
-        startDate = numberToDate(year: 2018, month: 1, day: 15)
+        setUI()
+        //起始日期
+        startDate = numberToDate(year: 2018, month: 9, day: 4)
+        switchTime = 5*100+7    //第五周第七天开始执行秋季表
         //"2018-01-15"
-        courseItems.append(CourseItem.init(dayInWeek: 6, classLowToUp: [1,12], name: "哈哈哈", weeks: [1], teacher: "哈哈老师", location: "东九"))
+        courseItems.append(CourseItem.init(dayInWeek: 1, classLowToUp: [5,6], name: "西方新闻思想", weeks: [1,2,3,4,6,7], teacher: "刘锐", location: "东九楼D215"))
         
+        //insertEventByCourseItems()
+        
+    }
+    func setUI(){
+        let calendar: Calendar = Calendar(identifier: .gregorian)
+        var comps: DateComponents = DateComponents()
+        comps = calendar.dateComponents([.year,.month,.day, .weekday, .hour, .minute,.second], from: Date())
+        freshmanYear = comps.year!
+        if comps.month! < 9 {
+            freshmanYear -= 1
+        }
+        seniorBtn.setTitle("\(freshmanYear-3)", for: .normal)
+        juniorBtn.setTitle("\(freshmanYear-2)", for: .normal)
+        sophomoreBtn.setTitle("\(freshmanYear-1)", for: .normal)
+        freshmanBtn.setTitle("\(freshmanYear)", for: .normal)
+        
+    }
+    //以下开始四个按钮的动作模式（暂时只知道这个简单粗暴的方法）
+    @IBAction func seniorBtnAction(_ sender: UIButton) {
+        seniorBtn.isSelected = true
+        juniorBtn.isSelected = false
+        sophomoreBtn.isSelected = false
+        freshmanBtn.isSelected = false
+        
+        grade = gradeChoose.senior
+        whenFinishChoose()
+    }
+    @IBAction func juniorBtnAction(_ sender: UIButton) {
+        seniorBtn.isSelected = false
+        juniorBtn.isSelected = true
+        sophomoreBtn.isSelected = false
+        freshmanBtn.isSelected = false
+        
+        grade = gradeChoose.junior
+        whenFinishChoose()
+    }
+    @IBAction func sophomoreBtnAction(_ sender: UIButton) {
+        seniorBtn.isSelected = false
+        juniorBtn.isSelected = false
+        sophomoreBtn.isSelected = true
+        freshmanBtn.isSelected = false
+        
+        grade = gradeChoose.sophomore
+        whenFinishChoose()
+    }
+    @IBAction func freshmanBtnAction(_ sender: UIButton) {
+        seniorBtn.isSelected = false
+        juniorBtn.isSelected = false
+        sophomoreBtn.isSelected = false
+        freshmanBtn.isSelected = true
+        
+        grade = gradeChoose.freshman
+        whenFinishChoose()
+    }
+    //五个按钮的
+    @IBAction func xinwenAction(_ sender: UIButton) {
+        xinwenBtn.isSelected = true
+        guangdianBtn.isSelected = false
+        guanggaoBtn.isSelected = false
+        chuanboBtn.isSelected = false
+        bozhuBtn.isSelected = false
+        
+        major = majorChoose.xinwen
+        whenFinishChoose()
+    }
+    @IBAction func guangdianAction(_ sender: UIButton) {
+        xinwenBtn.isSelected = false
+        guangdianBtn.isSelected = true
+        guanggaoBtn.isSelected = false
+        chuanboBtn.isSelected = false
+        bozhuBtn.isSelected = false
+        
+        major = majorChoose.guangdian
+        whenFinishChoose()
+    }
+    @IBAction func guanggaoAction(_ sender: UIButton) {
+        xinwenBtn.isSelected = false
+        guangdianBtn.isSelected = false
+        guanggaoBtn.isSelected = true
+        chuanboBtn.isSelected = false
+        bozhuBtn.isSelected = false
+        
+        major = majorChoose.guanggao
+        whenFinishChoose()
+    }
+    @IBAction func chuanboAction(_ sender: UIButton) {
+        xinwenBtn.isSelected = false
+        guangdianBtn.isSelected = false
+        guanggaoBtn.isSelected = false
+        chuanboBtn.isSelected = true
+        bozhuBtn.isSelected = false
+        
+        major = majorChoose.chuanbo
+        whenFinishChoose()
+    }
+    @IBAction func bozhuAction(_ sender: UIButton) {
+        xinwenBtn.isSelected = false
+        guangdianBtn.isSelected = false
+        guanggaoBtn.isSelected = false
+        chuanboBtn.isSelected = false
+        bozhuBtn.isSelected = true
+        
+        major = majorChoose.bozhu
+        whenFinishChoose()
+    }
+    //马丹总算结束了
+    func whenFinishChoose(){
+        if grade != gradeChoose.unchoose && major != majorChoose.unchoose{
+            print("选择了\(grade)、\(major)")
+        }
+    }
+    
+    
+    
+    //插入文件
+    func insertEventByCourseItems(){
         let eventStore = EKEventStore()
-        
         //建立一个课表日历
         let tempCalendar = EKCalendar.init(for: .event, eventStore: eventStore)
         do{
@@ -36,24 +170,8 @@ class CourseCalendarVC: UIViewController {
         eventStore.requestAccess(to: .event, completion: {
             granted, error in
             if (granted) && (error == nil) {
-                print("granted \(granted)")
-                print("error  \(error)")
-                /*
-                // 新建一个事件
-                let event:EKEvent = EKEvent(eventStore: eventStore)
-                event.title = "新增一个测试事件"
-                event.startDate = self.numberToDate(year: 2018, month: 1, day: 18)
-                event.endDate = Date.init(timeInterval: 60*60, since: event.startDate)
-                event.notes = "这个是备注"
-                event.location = "东九楼"
-                //event.addAlarm(EKAlarm.init(relativeOffset: 1000))
-                event.calendar = tempCalendar
-                do{
-                    try eventStore.save(event, span: .thisEvent)
-                    print("Saved Event")
-                }catch{}*/
-                
-                
+                //print("granted \(granted)")
+                //print("error  \(error)")
                 let events = self.switchCourseItemToEvent(courseItem: self.courseItems[0], eventStore: eventStore, calendar: tempCalendar)
                 print("events的数量\(events.count)")
                 for event in events{
@@ -61,12 +179,12 @@ class CourseCalendarVC: UIViewController {
                         try eventStore.save(event, span: .thisEvent)
                         print("Saved Event")
                     }catch{
-                        print("醋味：\(error)")
+                        print("添加失败：\(error)")
+                        self.alert(error: "添加失败", message: "请确认日历权限是否打开")
                     }
                 }
             }
         })
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -80,13 +198,16 @@ class CourseCalendarVC: UIViewController {
         for i in 0..<tempCourseItem.weeks.count{
             let event = EKEvent(eventStore: eventStore)
             event.title = tempCourseItem.name
+            let isSummer = ((tempCourseItem.weeks[i]*100 + tempCourseItem.dayInWeek) > switchTime) != (semester == "第一学期")
+            print("isSummer:\(isSummer)")
             let dates = inferDates(week: tempCourseItem.weeks[i],
                                    dayInWeek: tempCourseItem.dayInWeek,
                                    classLowToUp: tempCourseItem.classLowToUp,
                                    startDate: startDate,
-                                   isSummer: true)
+                                   isSummer: isSummer)
             event.startDate = dates[0]
             event.endDate = dates[1]
+            
             event.notes = "上课老师:\((tempCourseItem.teacher!))"
             event.location = tempCourseItem.location
             event.calendar = calendar
@@ -241,6 +362,12 @@ class CourseCalendarVC: UIViewController {
         let date = formatter.date(from: str)
         return date!
     }
+    func alert(error:String,message:String){
+        let alert = UIAlertController(title: error, message: message, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(ok)
+        self.present(alert, animated: true, completion: nil)
+    }
     struct CourseItem {
         var dayInWeek:Int!  //星期几上课
         var classLowToUp = [Int]()  //课程从第几节到第几节
@@ -257,6 +384,21 @@ class CourseCalendarVC: UIViewController {
             self.location = location
             print("teacher2:\(teacher)")
         }
+    }
+    struct gradeChoose {
+        static let senior = "大四"
+        static let junior = "大三"
+        static let sophomore = "大二"
+        static let freshman = "大一"
+        static let unchoose = "未选择"
+    }
+    struct majorChoose {
+        static let xinwen = "新闻"
+        static let guangdian = "广电"
+        static let guanggao = "广告"
+        static let chuanbo = "传播"
+        static let bozhu = "播主"
+        static let unchoose = "未选择"
     }
     /*
     // MARK: - Navigation

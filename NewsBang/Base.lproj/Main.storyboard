@@ -216,13 +216,208 @@
                     <view key="view" contentMode="scaleToFill" id="PwS-2h-9cU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择年级与专业，将相应课表添加至日历" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jjo-gi-yCm">
+                                <rect key="frame" x="16" y="30" width="221" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="年级" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCx-uW-HIC">
+                                <rect key="frame" x="16" y="56.5" width="37" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="年级" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="flW-sa-npm">
+                                <rect key="frame" x="16" y="135.5" width="37" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0g-rz-jK0">
+                                <rect key="frame" x="16" y="87" width="60" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="is9-9c-Ceo"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="四" backgroundImage="年级按钮背景_正常">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <state key="selected" backgroundImage="年级按钮背景_激活"/>
+                                <connections>
+                                    <action selector="seniorBtnAction:" destination="Juj-JP-uT8" eventType="touchUpInside" id="TZ7-Vf-gsk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="If0-V9-3Ex">
+                                <rect key="frame" x="92" y="87" width="60" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="cIH-Ua-ePB"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="三" backgroundImage="年级按钮背景_正常">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <state key="selected" backgroundImage="年级按钮背景_激活"/>
+                                <connections>
+                                    <action selector="juniorBtnAction:" destination="Juj-JP-uT8" eventType="touchUpInside" id="B3a-2W-gGZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vnl-X4-Xha">
+                                <rect key="frame" x="244" y="87.5" width="60" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="OWj-az-XOh"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="一" backgroundImage="年级按钮背景_正常">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <state key="selected" backgroundImage="年级按钮背景_激活"/>
+                                <connections>
+                                    <action selector="freshmanBtnAction:" destination="Juj-JP-uT8" eventType="touchUpInside" id="CSH-sJ-JJN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HWO-sa-xeb">
+                                <rect key="frame" x="16" y="168.5" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="HWO-sa-xeb" secondAttribute="height" id="Wuj-6e-N78"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="新闻" backgroundImage="年级按钮背景_正常">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <state key="selected" backgroundImage="年级按钮背景_激活"/>
+                                <connections>
+                                    <action selector="xinwenAction:" destination="Juj-JP-uT8" eventType="touchUpInside" id="xWs-ho-FO0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tyA-hx-9De">
+                                <rect key="frame" x="76" y="168" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="tyA-hx-9De" secondAttribute="height" id="kZD-mR-x1e"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="广电" backgroundImage="年级按钮背景_正常">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <state key="selected" backgroundImage="年级按钮背景_激活"/>
+                                <connections>
+                                    <action selector="guangdianAction:" destination="Juj-JP-uT8" eventType="touchUpInside" id="tM2-wf-uK0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DIY-Pp-Sty">
+                                <rect key="frame" x="136" y="168" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="DIY-Pp-Sty" secondAttribute="height" id="iNy-ij-fE2"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="广告" backgroundImage="年级按钮背景_正常">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <state key="selected" backgroundImage="年级按钮背景_激活"/>
+                                <connections>
+                                    <action selector="guanggaoAction:" destination="Juj-JP-uT8" eventType="touchUpInside" id="HHR-yD-jMe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c88-48-KfE">
+                                <rect key="frame" x="196" y="168" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="c88-48-KfE" secondAttribute="height" id="KPn-cY-Ouy"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="传播" backgroundImage="年级按钮背景_正常">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <state key="selected" backgroundImage="年级按钮背景_激活"/>
+                                <connections>
+                                    <action selector="chuanboAction:" destination="Juj-JP-uT8" eventType="touchUpInside" id="4zW-yo-R5l"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IC6-Km-gzk">
+                                <rect key="frame" x="256" y="168.5" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="IC6-Km-gzk" secondAttribute="height" id="SOi-m4-beB"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="播主" backgroundImage="年级按钮背景_正常">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <state key="selected" backgroundImage="年级按钮背景_激活"/>
+                                <connections>
+                                    <action selector="bozhuAction:" destination="Juj-JP-uT8" eventType="touchUpInside" id="PSz-lh-Olk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HD9-og-Oi9">
+                                <rect key="frame" x="168" y="87" width="60" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="49A-aG-VWm"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="二" backgroundImage="年级按钮背景_正常">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <state key="selected" backgroundImage="年级按钮背景_激活"/>
+                                <connections>
+                                    <action selector="sophomoreBtnAction:" destination="Juj-JP-uT8" eventType="touchUpInside" id="EWx-9Y-ecB"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="tyA-hx-9De" firstAttribute="leading" secondItem="HWO-sa-xeb" secondAttribute="trailing" constant="12" id="2yJ-C4-7kg"/>
+                            <constraint firstItem="Vnl-X4-Xha" firstAttribute="leading" secondItem="HD9-og-Oi9" secondAttribute="trailing" constant="16" id="3pX-UI-MML"/>
+                            <constraint firstItem="HWO-sa-xeb" firstAttribute="leading" secondItem="NKe-Sb-OF4" secondAttribute="leading" constant="16" id="5nr-4y-o2g"/>
+                            <constraint firstItem="c88-48-KfE" firstAttribute="height" secondItem="HWO-sa-xeb" secondAttribute="height" id="6fC-Xo-QOp"/>
+                            <constraint firstItem="HD9-og-Oi9" firstAttribute="centerY" secondItem="B0g-rz-jK0" secondAttribute="centerY" id="CXs-gy-QsQ"/>
+                            <constraint firstItem="flW-sa-npm" firstAttribute="leading" secondItem="NKe-Sb-OF4" secondAttribute="leading" constant="16" id="Cih-jv-kRQ"/>
+                            <constraint firstItem="Vnl-X4-Xha" firstAttribute="centerY" secondItem="B0g-rz-jK0" secondAttribute="centerY" id="EKz-OO-t4u"/>
+                            <constraint firstItem="HWO-sa-xeb" firstAttribute="top" secondItem="flW-sa-npm" secondAttribute="bottom" constant="12" id="FHo-GS-c1i"/>
+                            <constraint firstItem="DIY-Pp-Sty" firstAttribute="height" secondItem="HWO-sa-xeb" secondAttribute="height" id="G9r-TU-rBC"/>
+                            <constraint firstItem="tyA-hx-9De" firstAttribute="centerY" secondItem="HWO-sa-xeb" secondAttribute="centerY" id="GR0-RK-1SG"/>
+                            <constraint firstItem="HWO-sa-xeb" firstAttribute="width" secondItem="PwS-2h-9cU" secondAttribute="width" multiplier="0.2" constant="-16" id="GVj-cB-ISO"/>
+                            <constraint firstItem="If0-V9-3Ex" firstAttribute="height" secondItem="B0g-rz-jK0" secondAttribute="height" id="GbJ-of-ebp"/>
+                            <constraint firstItem="If0-V9-3Ex" firstAttribute="leading" secondItem="B0g-rz-jK0" secondAttribute="trailing" constant="16" id="HyI-qY-ozA"/>
+                            <constraint firstItem="Jjo-gi-yCm" firstAttribute="top" secondItem="NKe-Sb-OF4" secondAttribute="top" constant="10" id="J2P-JW-WCi"/>
+                            <constraint firstItem="Vnl-X4-Xha" firstAttribute="width" secondItem="B0g-rz-jK0" secondAttribute="width" id="Ojk-Xy-glU"/>
+                            <constraint firstItem="DIY-Pp-Sty" firstAttribute="centerY" secondItem="HWO-sa-xeb" secondAttribute="centerY" id="PLZ-05-hfe"/>
+                            <constraint firstItem="IC6-Km-gzk" firstAttribute="height" secondItem="HWO-sa-xeb" secondAttribute="height" id="RPI-BG-vfc"/>
+                            <constraint firstItem="IC6-Km-gzk" firstAttribute="leading" secondItem="c88-48-KfE" secondAttribute="trailing" constant="12" id="SRA-97-kLo"/>
+                            <constraint firstItem="aCx-uW-HIC" firstAttribute="top" secondItem="Jjo-gi-yCm" secondAttribute="bottom" constant="12" id="UZ1-dQ-Y24"/>
+                            <constraint firstItem="tyA-hx-9De" firstAttribute="height" secondItem="HWO-sa-xeb" secondAttribute="height" id="Unj-ge-HDu"/>
+                            <constraint firstItem="Jjo-gi-yCm" firstAttribute="leading" secondItem="NKe-Sb-OF4" secondAttribute="leading" constant="16" id="V2b-T5-9eT"/>
+                            <constraint firstItem="DIY-Pp-Sty" firstAttribute="leading" secondItem="tyA-hx-9De" secondAttribute="trailing" constant="12" id="WGx-hG-XhX"/>
+                            <constraint firstItem="B0g-rz-jK0" firstAttribute="top" secondItem="aCx-uW-HIC" secondAttribute="bottom" constant="10" id="YLH-9i-k9C"/>
+                            <constraint firstItem="HD9-og-Oi9" firstAttribute="leading" secondItem="If0-V9-3Ex" secondAttribute="trailing" constant="16" id="b8T-gt-Dnc"/>
+                            <constraint firstItem="IC6-Km-gzk" firstAttribute="centerY" secondItem="HWO-sa-xeb" secondAttribute="centerY" id="bS9-kN-3eu"/>
+                            <constraint firstItem="If0-V9-3Ex" firstAttribute="centerY" secondItem="B0g-rz-jK0" secondAttribute="centerY" id="h9Z-nc-TUP"/>
+                            <constraint firstItem="c88-48-KfE" firstAttribute="centerY" secondItem="HWO-sa-xeb" secondAttribute="centerY" id="oOg-2k-6Bn"/>
+                            <constraint firstItem="aCx-uW-HIC" firstAttribute="leading" secondItem="NKe-Sb-OF4" secondAttribute="leading" constant="16" id="qq1-Kc-0Wk"/>
+                            <constraint firstItem="flW-sa-npm" firstAttribute="top" secondItem="B0g-rz-jK0" secondAttribute="bottom" constant="20" id="qrD-bz-2Rm"/>
+                            <constraint firstItem="c88-48-KfE" firstAttribute="leading" secondItem="DIY-Pp-Sty" secondAttribute="trailing" constant="12" id="s9e-l5-Ut3"/>
+                            <constraint firstItem="HD9-og-Oi9" firstAttribute="height" secondItem="B0g-rz-jK0" secondAttribute="height" id="tqt-3a-os0"/>
+                            <constraint firstItem="B0g-rz-jK0" firstAttribute="leading" secondItem="NKe-Sb-OF4" secondAttribute="leading" constant="16" id="w7G-0K-j1K"/>
+                            <constraint firstItem="Vnl-X4-Xha" firstAttribute="height" secondItem="B0g-rz-jK0" secondAttribute="height" id="wL7-8n-nNj"/>
+                            <constraint firstItem="B0g-rz-jK0" firstAttribute="width" secondItem="PwS-2h-9cU" secondAttribute="width" multiplier="0.25" constant="-20" id="wkB-83-iiv"/>
+                            <constraint firstItem="HD9-og-Oi9" firstAttribute="width" secondItem="B0g-rz-jK0" secondAttribute="width" id="yTj-hH-tl1"/>
+                            <constraint firstItem="If0-V9-3Ex" firstAttribute="width" secondItem="B0g-rz-jK0" secondAttribute="width" id="zua-R7-EHh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="NKe-Sb-OF4"/>
                     </view>
+                    <connections>
+                        <outlet property="bozhuBtn" destination="IC6-Km-gzk" id="N0i-xo-1ve"/>
+                        <outlet property="chuanboBtn" destination="c88-48-KfE" id="HdT-D6-S3a"/>
+                        <outlet property="freshmanBtn" destination="Vnl-X4-Xha" id="oSd-dy-kgh"/>
+                        <outlet property="guangdianBtn" destination="tyA-hx-9De" id="b0q-Jy-NJV"/>
+                        <outlet property="guanggaoBtn" destination="DIY-Pp-Sty" id="fkl-I9-Xnf"/>
+                        <outlet property="juniorBtn" destination="If0-V9-3Ex" id="NIV-HF-fHM"/>
+                        <outlet property="seniorBtn" destination="B0g-rz-jK0" id="cWm-CW-Svw"/>
+                        <outlet property="sophomoreBtn" destination="HD9-og-Oi9" id="nDU-2X-wuF"/>
+                        <outlet property="xinwenBtn" destination="HWO-sa-xeb" id="XZu-rY-FwZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A2G-dS-fY7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1809" y="-2274"/>
+            <point key="canvasLocation" x="1807.5" y="-2274.2957746478874"/>
         </scene>
         <!--教师名片-->
         <scene sceneID="WBs-Mx-UGz">
@@ -1657,6 +1852,8 @@
         <image name="tabitem1" width="30" height="30"/>
         <image name="tabitem2" width="30" height="30"/>
         <image name="分享按钮" width="64" height="64"/>
+        <image name="年级按钮背景_正常" width="60" height="28"/>
+        <image name="年级按钮背景_激活" width="60" height="28"/>
         <image name="我的" width="30" height="30"/>
         <image name="收藏按钮" width="64" height="64"/>
         <image name="收藏按钮·真" width="64" height="64"/>
