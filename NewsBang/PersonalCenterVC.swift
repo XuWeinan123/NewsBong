@@ -25,31 +25,43 @@ class PersonalCenterVC: UIViewController,MFMailComposeViewControllerDelegate {
         super.viewDidLoad()
         setUI()
         setInteraction()
+        //从修改页面接受消息
+        NotificationCenter.default.addObserver(self, selector: #selector(reload(notification:)), name: NSNotification.Name(rawValue:"reload"), object: nil)
         // Do any additional setup after loading the view.
+    }
+    @objc func reload(notification:Notification){
+        self.setUI()
     }
     func setUI(){
         avatar.layer.cornerRadius = avatar.frame.width/2
         
-        //如果没有用户，那么设置
-        if UserDefaults.standard.string(forKey: "username") == nil {
+        //如果有用户，那么设置
+        if let username = UserDefaults.standard.string(forKey: "username"){
+            usernameLb.text = AVUser.current()!["fullname"] as? String
+            usernumberLb.text = UserDefaults.standard.string(forKey: "username")
+            //设置用户头像
+            let queryAvatar = AVQuery(className: "_User")
+            queryAvatar.whereKey("username", equalTo: username)
+            queryAvatar.findObjectsInBackground({ (objects:[Any]?, error:Error?) in
+                if error == nil{
+                    print("用户头像找到了！")
+                    let object = objects?.first as AnyObject
+                    let tempFile = object["avatar"] as? AVFile
+                    tempFile?.getDataInBackground({ (data:Data?, error:Error?) in
+                        self.useravatar.image = UIImage(data: data!)
+                    })
+                }else{
+                    print("寻找用户头像失败:\(error?.localizedDescription)")
+                }
+            })
+            functionBtn.setTitle("退出", for: .normal)
+            functionBtn.setTitleColor(UIColor.red, for: .normal)
+        }else{
             usernameLb.text = "未登录"
             usernumberLb.text = "U201417000"
             useravatar.image = UIImage(named: "缺省头像")
             functionBtn.setTitle("登录", for: UIControlState.normal)
             functionBtn.setTitleColor(UIColor.blue, for: .normal)
-        }else{
-            usernameLb.text = AVUser.current()!["fullname"] as? String
-            usernumberLb.text = UserDefaults.standard.string(forKey: "username")
-            //设置用户头像
-            let tempFile = AVUser.current()?.object(forKey: "avatar") as? AVFile
-            tempFile?.getDataInBackground({ (data:Data?, error:Error?) in
-                self.useravatar.image = UIImage(data: data!)
-            })
-            
-            functionBtn.setTitle("退出", for: .normal)
-            functionBtn.setTitleColor(UIColor.red, for: .normal)
-            
-            //print("fullname:\(AVUser.current()!["fullname"]!)")
         }
     }
     func setInteraction(){

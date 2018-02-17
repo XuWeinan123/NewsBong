@@ -36,7 +36,7 @@ class CollegeNewsVC: UITableViewController {
             if titleNode==nil{
                 break
             }else{
-                var str = (titleNode?.attributes["href"]) as! String
+                var str = (titleNode?.attributes["href"])!
                 str.removeFirst();str.removeFirst();str.removeFirst();
                 articleItems.append(ArticleItems.init(name: (titleNode?.content)!, date: (dateNode?.content)!, url: "http://sjic.hust.edu.cn/\(str)"))
             }
@@ -102,9 +102,15 @@ class CollegeNewsVC: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("点击了\(indexPath.row),结果\n\(articleItems[indexPath.row].url)")
+        //判断是不是站内网址
+        if !articleItems[indexPath.row].url.contains("info"){
+            let outUrl = articleItems[indexPath.row].url.substring(from: String.Index(encodedOffset: 24))
+            print("outUrl:\(outUrl)")
+            UIApplication.shared.open(URL(string: "htt\(outUrl)")!, options: [:], completionHandler: nil)
+            return
+        }
         let articlePage = self.storyboard?.instantiateViewController(withIdentifier: "ArticlePage") as! ArticlePageVC
         articlePage.url = articleItems[indexPath.row].url
-        print("str:\(articleItems[indexPath.row].date)")
         articlePage.date = articleItems[indexPath.row].date
         articlePage.hidesBottomBarWhenPushed = true 
         articlePage.from = "学院要闻"
@@ -130,12 +136,12 @@ class CollegeNewsVC: UITableViewController {
                         break
                     }else{
                         //新网页会重复三篇，所以……
-                        if i<=3 {continue}
-                        var str = (titleNode?.attributes["href"]) as! String
-                        print("之前:\(str)")
+                        if i<=3 || i>23 {continue}
+                        var str = (titleNode?.attributes["href"])!
+                        //print("之前:\(str)")
                         str.removeFirst();str.removeFirst();str.removeFirst();
                         str = str.replacingOccurrences(of: "../", with: "")
-                        print("之后:\(str)")
+                        //print("之后:\(str)")
                         articleItems.append(ArticleItems.init(name: (titleNode?.content)!, date: (dateNode?.content)!, url: "http://sjic.hust.edu.cn/\(str)"))
                     }
                 }
@@ -200,4 +206,3 @@ class CollegeNewsVC: UITableViewController {
         }
     }
 }
-

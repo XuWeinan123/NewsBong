@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import AVOSCloud
 
-class PersonalInfoModifyVC: UIViewController {
+class PersonalInfoModifyVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     var imageAvatar:UIImage!
     var name:String!
@@ -17,17 +18,65 @@ class PersonalInfoModifyVC: UIViewController {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var nameLb: UILabel!
     @IBOutlet weak var numberLb: UILabel!
+    @IBOutlet weak var emailLb: UITextField!
+    
+    @IBOutlet weak var changeAvatar: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         //设置图片圆角
         image.layer.cornerRadius = image.frame.height/2
+        changeAvatar.layer.cornerRadius = changeAvatar.frame.height/2
         
         //设置初始资源
         image.image = imageAvatar
         nameLb.text = name
         numberLb.text = number
         
+        //添加点击事件
+        let avatarTap = UITapGestureRecognizer(target: self, action: #selector(avatarChange))
+        avatarTap.numberOfTapsRequired = 1
+        changeAvatar.addGestureRecognizer(avatarTap)
+        
+        
+        //添加bar上右按钮
+        let rightBarItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveChanges))
+        self.navigationItem.setRightBarButton(rightBarItem, animated: true)
+        
         // Do any additional setup after loading the view.
+    }
+    @objc func saveChanges(){
+        let user = AVUser.current()
+        if changeAvatar.alpha != 1{
+            let avaData = UIImagePNGRepresentation(image.image!)
+            let avaFile = AVFile(name: "ava.jpg", data: avaData!)
+            user?["avatar"] = avaFile
+        }
+        if emailLb.text != ""{
+            user?.email = emailLb.text
+        }
+        user?.saveInBackground({ (success:Bool, error:Error?) in
+            if success{
+                print("头像上传成功\(self.changeAvatar.alpha)")
+                //发送通知到主页
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue:"reload"), object: nil)
+                self.navigationController?.popViewController(animated: true)
+            }else{
+                print("用户更新失败:\(error?.localizedDescription)")
+            }
+        })
+    }
+    @objc func avatarChange(){
+        print("点击成功")
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .photoLibrary
+        picker.allowsEditing = true
+        present(picker, animated: true, completion: nil)
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        image.image = (info[UIImagePickerControllerEditedImage] as? UIImage)?.cropToSquare()
+        self.dismiss(animated: true, completion: nil)
+        changeAvatar.alpha = 0.1
     }
 
     override func didReceiveMemoryWarning() {

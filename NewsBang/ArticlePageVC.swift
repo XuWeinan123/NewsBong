@@ -9,7 +9,6 @@
 import UIKit
 import Ji
 import AVOSCloud
-import JDStatusBarNotification
 
 class ArticlePageVC: UIViewController,UIWebViewDelegate {
     var url = "www.baidu.com"
@@ -202,7 +201,7 @@ class ArticlePageVC: UIViewController,UIWebViewDelegate {
         sender.isSelected = !sender.isSelected
         if sender.isSelected {
             sendCollection.saveEventually()
-            JDStatusBarNotification.show(withStatus: "收藏成功", dismissAfter: 0.8)
+            self.noticeTop("收藏成功", autoClear: true, autoClearTime: 1)
         }else{
             let query = AVQuery(className: "Collection")
             query.whereKey("username", equalTo: sendCollection["username"])
@@ -211,7 +210,7 @@ class ArticlePageVC: UIViewController,UIWebViewDelegate {
                 if error == nil{
                     for object in objects!{
                         (object as AnyObject).deleteEventually()
-                        JDStatusBarNotification.show(withStatus: "取消收藏", dismissAfter: 0.8)
+                        self.noticeTop("取消收藏", autoClear: true, autoClearTime: 1)
                     }
                 }
             })

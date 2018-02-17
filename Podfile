@@ -10,6 +10,7 @@ target 'NewsBang' do
   pod 'Ji'
   pod 'AVOSCloud'
   pod 'RadioButton'
-  pod 'JDStatusBarNotification'
-
+  pod 'JJStockView'
+  pod 'lottie-ios'
+  
 end

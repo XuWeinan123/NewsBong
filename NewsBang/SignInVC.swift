@@ -38,6 +38,7 @@ class SignInVC: UIViewController {
                 
                 let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
                 appDelegate.login()
+                self.view.endEditing(true)
             }else{
                 print("登录错误\(error?.localizedDescription)")
                 self.alert(error: "登录错误", message: "用户名或密码出错")

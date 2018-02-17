@@ -66,11 +66,11 @@ class CommentVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! CommentCell
         //如果有数据，那么直接读取，如果没有，那么查询
-        if let cellAvatarFile = comments[indexPath.row].imageFile{
-            cellAvatarFile.getDataInBackground({ (data:Data?, error:Error?) in
-                cell.avatar.image = UIImage(data: data!)
-            })
-        }else{
+        //if let cellAvatarFile = comments[indexPath.row].imageFile{
+        //    cellAvatarFile.getDataInBackground({ (data:Data?, error:Error?) in
+        //        cell.avatar.image = UIImage(data: data!)
+        //    })
+        //}else{
             let avatarQuery = AVQuery(className: "_User")
             avatarQuery.whereKey("username", equalTo: AVUser.current()?.username!)
             avatarQuery.findObjectsInBackground({ (objects:[Any]?, error:Error?) in
@@ -87,7 +87,7 @@ class CommentVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                     print("读取数据错了\(error?.localizedDescription)")
                 }
             })
-        }
+        //}
         cell.username.text = comments[indexPath.row].username
         cell.content.text = comments[indexPath.row].content
         print("cellForRowAt")

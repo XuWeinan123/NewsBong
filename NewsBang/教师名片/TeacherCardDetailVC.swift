@@ -135,7 +135,9 @@ class TeacherCardDetailVC: UIViewController,UIWebViewDelegate {
     }
     @objc func mailTapGesture(){
         print("打开邮件")
-        UIApplication.shared.openURL(URL.init(string: "mailto://\(contactLb.text!)")!)
+        if contactLb.text!.contains("@") {
+            UIApplication.shared.openURL(URL.init(string: "mailto://\(contactLb.text!)")!)
+        }
     }
     /*func uploadPerson(node:[JiNode],name:String,url:URL,position:String){
         let object = AVObject(className: "TeacherTitleContact")

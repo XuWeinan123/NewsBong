@@ -72,6 +72,7 @@ class SignUpVC: UIViewController {
                         //从AppDelegate类中调用login方法
                         let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
                         appDelegate.login()
+                        self.view.endEditing(true)
                     }else{
                         print(error?.localizedDescription)
                     }
