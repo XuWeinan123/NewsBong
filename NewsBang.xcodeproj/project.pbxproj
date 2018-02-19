@@ -22,6 +22,9 @@
 		E12EB81C2003C6EB003CB005 /* StateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12EB81B2003C6EB003CB005 /* StateVC.swift */; };
 		E12F3B702005EED4002AEC1F /* PersonalCenterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F3B6F2005EED4002AEC1F /* PersonalCenterVC.swift */; };
 		E12FD7FE200762670084717E /* PersonalInfoModifyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12FD7FD200762670084717E /* PersonalInfoModifyVC.swift */; };
+		E13299CE20388B7400E0A296 /* LibraryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13299CD20388B7400E0A296 /* LibraryCell.swift */; };
+		E13299D0203940B000E0A296 /* LibraryNextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13299CF203940B000E0A296 /* LibraryNextVC.swift */; };
+		E13299D2203948EF00E0A296 /* LibraryNextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13299D1203948EF00E0A296 /* LibraryNextCell.swift */; };
 		E1367BE42004896E00419357 /* ArticlePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1367BE32004896E00419357 /* ArticlePageVC.swift */; };
 		E148B4F8200658C600C282FA /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E148B4F7200658C600C282FA /* SignInVC.swift */; };
 		E148B4FA2006FE6300C282FA /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E148B4F92006FE6300C282FA /* SignUpVC.swift */; };
@@ -79,6 +82,9 @@
 		E12EB81B2003C6EB003CB005 /* StateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateVC.swift; sourceTree = "<group>"; };
 		E12F3B6F2005EED4002AEC1F /* PersonalCenterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalCenterVC.swift; sourceTree = "<group>"; };
 		E12FD7FD200762670084717E /* PersonalInfoModifyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoModifyVC.swift; sourceTree = "<group>"; };
+		E13299CD20388B7400E0A296 /* LibraryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCell.swift; sourceTree = "<group>"; };
+		E13299CF203940B000E0A296 /* LibraryNextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryNextVC.swift; sourceTree = "<group>"; };
+		E13299D1203948EF00E0A296 /* LibraryNextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryNextCell.swift; sourceTree = "<group>"; };
 		E1367BE32004896E00419357 /* ArticlePageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlePageVC.swift; sourceTree = "<group>"; };
 		E148B4F7200658C600C282FA /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		E148B4F92006FE6300C282FA /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
@@ -245,8 +251,11 @@
 				E1F287392010583300F12E2F /* 课程日历 */,
 				E1294C7C202AD4D8004943E1 /* 一个转盘 */,
 				E17D32042031A24A005C75A5 /* 知乎爬虫 */,
-				E1518E912010F702001F3EE0 /* SwiftNotice.swift */,
 				E17F42672035F48F008182E3 /* LibraryVC.swift */,
+				E13299CD20388B7400E0A296 /* LibraryCell.swift */,
+				E13299CF203940B000E0A296 /* LibraryNextVC.swift */,
+				E13299D1203948EF00E0A296 /* LibraryNextCell.swift */,
+				E1518E912010F702001F3EE0 /* SwiftNotice.swift */,
 			);
 			path = NewsBang;
 			sourceTree = "<group>";
@@ -459,9 +468,12 @@
 				E1518E9420130E5C001F3EE0 /* ManualAddCourseVC.swift in Sources */,
 				E12A872F2003544500701683 /* NavViewController.swift in Sources */,
 				E12A87292003450400701683 /* ISViewPagerContainer.swift in Sources */,
+				E13299CE20388B7400E0A296 /* LibraryCell.swift in Sources */,
 				E1D5C8BF200F2BFB00F58364 /* convinence.swift in Sources */,
+				E13299D0203940B000E0A296 /* LibraryNextVC.swift in Sources */,
 				E1D5C8B9200F13F600F58364 /* MyTimer.swift in Sources */,
 				E1DED32D2014E86B0037CC51 /* CourseAdvancedSettingVC.swift in Sources */,
+				E13299D2203948EF00E0A296 /* LibraryNextCell.swift in Sources */,
 				E1518E9A201317EB001F3EE0 /* RangeSliderTrackLayer.swift in Sources */,
 				E1518E9C20135E47001F3EE0 /* HHPickerView.swift in Sources */,
 				E148B4FA2006FE6300C282FA /* SignUpVC.swift in Sources */,
@@ -613,11 +625,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BPP589VP97;
 				INFOPLIST_FILE = NewsBang/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xwn.NewsBang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -629,11 +642,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BPP589VP97;
 				INFOPLIST_FILE = NewsBang/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xwn.NewsBang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

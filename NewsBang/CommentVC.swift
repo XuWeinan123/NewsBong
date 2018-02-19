@@ -41,8 +41,26 @@ class CommentVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                     let tempObject = object as AnyObject
                     let username = tempObject["username"] as! String
                     let content = tempObject["content"] as! String
-                    self.comments.append(Comment.init(imageFile: nil, username: username, content: content))
-                    self.tableView.reloadData()
+                    //通过username获取fullname
+                    let doubleQuery = AVQuery(className: "_User")
+                    doubleQuery.whereKey("username", equalTo: username)
+                    doubleQuery.findObjectsInBackground({ (objects:[Any]?, error:Error?) in
+                        if error == nil{
+                            let tempObject2 = objects!.first as AnyObject
+                            var tempNume = tempObject2.object(forKey: "fullname") as! String
+                            if tempNume == "未设置用户名"{
+                                tempNume = username
+                            }
+                            self.comments.append(Comment.init(imageFile: nil, username: tempNume, content: content, date: tempObject.createdAt!!))
+                            self.comments.sort(by: { (object1, object2) -> Bool in
+                                print("\(object1.date!)与\(object2.date!)\n比较结果\(object1.date.compare(object2.date).rawValue)")
+                                return object1.date.compare(object2.date).rawValue == -1
+                            })
+                            self.tableView.reloadData()
+                        }else{
+                            print(error?.localizedDescription)
+                        }
+                    })
                 }
             }
         }
@@ -65,29 +83,29 @@ class CommentVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! CommentCell
-        //如果有数据，那么直接读取，如果没有，那么查询
-        //if let cellAvatarFile = comments[indexPath.row].imageFile{
-        //    cellAvatarFile.getDataInBackground({ (data:Data?, error:Error?) in
-        //        cell.avatar.image = UIImage(data: data!)
-        //    })
-        //}else{
-            let avatarQuery = AVQuery(className: "_User")
-            avatarQuery.whereKey("username", equalTo: AVUser.current()?.username!)
-            avatarQuery.findObjectsInBackground({ (objects:[Any]?, error:Error?) in
-                if error == nil{
-                    guard let objects = objects,objects.count>0 else{
-                        return
-                    }
-                    let tempObject = objects.first as! AnyObject
-                    let avaFile = tempObject["avatar"] as? AVFile
-                    avaFile?.getDataInBackground({ (data:Data?, error:Error?) in
-                        cell.avatar.image = UIImage(data: data!)
-                    })
-                }else{
-                    print("读取数据错了\(error?.localizedDescription)")
+        
+        let avatarQuery = AVQuery(className: "_User")
+        if comments[indexPath.row].username.count > 3 {
+            //长度大于三那就是学号了
+            avatarQuery.whereKey("username", equalTo: comments[indexPath.row].username)
+        }else{
+            //长度小于三那就是名字了
+            avatarQuery.whereKey("fullname", equalTo: comments[indexPath.row].username)
+        }
+        avatarQuery.findObjectsInBackground({ (objects:[Any]?, error:Error?) in
+            if error == nil{
+                guard let objects = objects,objects.count>0 else{
+                    return
                 }
-            })
-        //}
+                let tempObject = objects.first as! AnyObject
+                let avaFile = tempObject["avatar"] as? AVFile
+                avaFile?.getDataInBackground({ (data:Data?, error:Error?) in
+                    cell.avatar.image = UIImage(data: data!)
+                })
+            }else{
+                print("读取数据错了\(error?.localizedDescription)")
+            }
+        })
         cell.username.text = comments[indexPath.row].username
         cell.content.text = comments[indexPath.row].content
         print("cellForRowAt")
@@ -101,17 +119,18 @@ class CommentVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         if let user = AVUser.current(){
             print("avatar\(user["avatar"])")
             let imageFile = user["avatar"] as? AVFile
-            let username = user.username!
+            var username = user["fullname"] as! String
+            if username == "未设置用户名" {username = user.username!}
             let content = commentInput.text!
             if content != ""{
                 //更新表格视图
-                comments.append(Comment(imageFile: imageFile, username: username, content: content))
+                comments.append(Comment(imageFile: imageFile, username: username, content: content,date:Date()))
                 tableView.reloadData()
                 commentInput.text = ""
                 //发送至云端
                 let commentObj = AVObject(className: "Comments")
                 commentObj["to"] = url
-                commentObj["username"] = username
+                commentObj["username"] = user.username!
                 commentObj["content"] = content
                 commentObj.saveEventually()//提交提交
                 //commentObj["to"]
@@ -121,6 +140,7 @@ class CommentVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             }
         }else{
             print("未登录无法发送评论")
+            alert(error: "未登录", message: "未登录无法发送评论")
         }
     }
     
@@ -138,10 +158,12 @@ class CommentVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         var imageFile:AVFile?
         var username:String!
         var content:String!
-        init(imageFile:AVFile?,username:String,content:String) {
+        var date:Date!
+        init(imageFile:AVFile?,username:String,content:String,date:Date) {
             self.imageFile = imageFile
             self.username = username
             self.content = content
+            self.date = date
         }
         init() {
             self.imageFile = nil

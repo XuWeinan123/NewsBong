@@ -9,21 +9,91 @@
 import UIKit
 import Ji
 
-class LibraryVC: UIViewController {
+class LibraryVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate {
     
-    var searchText = "从你的全世界路过"
+    var searchText = "从你"
 
+    @IBOutlet var tableView: UITableView!
+    var searchResult = SearchResult(bookInfoArray: [[]], subheadTitle: [])
+    @IBOutlet var searchBar: UISearchBar!
     override func viewDidLoad() {
         super.viewDidLoad()
+        //注册列表
+        tableView.delegate = self
+        tableView.dataSource = self
+        //激活搜索框
+        searchBar.becomeFirstResponder()
+        searchBar.delegate = self
         
-        searchText = searchText.replacingOccurrences(of: " ", with: "+")
-        let str = "http://ftp.lib.hust.edu.cn/search*chx/X?SEARCH=\(searchText)"
-        let encodedStr = str.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
-        print("测试:\(encodedStr!)")
-        let searchResult = seachByUrl(url: encodedStr!)
         //print("打印图书:\(jiNode)")
 
         // Do any additional setup after loading the view.
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.view.endEditing(true)
+        self.searchText = searchBar.text!
+        self.pleaseWait()
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        DispatchQueue.global().async {
+            self.searchText = self.searchText.replacingOccurrences(of: " ", with: "+")
+            let str = "http://ftp.lib.hust.edu.cn/search*chx/X?SEARCH=\(self.searchText)"
+            let encodedStr = str.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+            print("结果网址:\(encodedStr!)")
+            self.searchResult = self.seachByUrl(url: encodedStr!)
+            DispatchQueue.main.async {
+                if self.searchResult.subheadTitle.first == "结果唯一，直接进入" {
+                    //print("直接进入结果\(self.searchResult.subheadTitle[1])")
+                    self.noticeTop("结果唯一，直接进入")
+                    let libraryNext = self.storyboard?.instantiateViewController(withIdentifier: "LibraryNext") as! LibraryNextVC
+                    libraryNext.url = self.searchResult.subheadTitle[1]
+                    let backBtn = UIBarButtonItem()
+                    backBtn.title = "返回"
+                    self.navigationItem.backBarButtonItem = backBtn
+                    self.navigationController?.pushViewController(libraryNext, animated: true)
+                }else if self.searchResult.subheadTitle.count == 0{
+                    self.tableView.reloadData()
+                    self.noticeTop("未找到结果")
+                }else{
+                    self.tableView.reloadData()
+                    self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableViewScrollPosition.top, animated: false)
+                    self.noticeTop("已获取前50条记录")
+                }
+                self.clearAllNotice()
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return searchResult.subheadTitle.count
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchResult.bookInfoArray[section].count
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 144
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! LibraryCell
+        let tempArray = searchResult.bookInfoArray[indexPath.section]
+        cell.title.text = tempArray[indexPath.row].title
+        cell.author.text = tempArray[indexPath.row].author
+        cell.publish.text = tempArray[indexPath.row].publish
+        cell.bio.text = tempArray[indexPath.row].bio
+        cell.bookImage.imageFromURL(tempArray[indexPath.row].imageUrl, placeholder: UIImage.init(named: "缺省头像")!)
+        return cell
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 28))
+        view.backgroundColor = UIColor.white
+        let line = UIView(frame: CGRect(x: 0, y: 27, width: UIScreen.main.bounds.width, height: 1))
+        line.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.05)
+        let text = UILabel(frame: CGRect(x: 15, y: 0, width: UIScreen.main.bounds.width-30, height: 28))
+        text.text = searchResult.subheadTitle[section]
+        text.font = UIFont.systemFont(ofSize: 10)
+        text.textColor = UIColor.gray
+        view.addSubview(text)
+        view.addSubview(line)
+        return view
     }
     func seachByUrl(url:String) -> SearchResult{
         
@@ -32,7 +102,15 @@ class LibraryVC: UIViewController {
         if jiNode == nil {
             jiNode = jiDoc?.xPath("//body/table")?.first?.children[7].firstChild?.firstChild?.children
         }
-        print(jiNode)
+        //如果只找到一条数据的话，会直接进入结果页，因此要判断
+        let countNode = jiDoc?.xPath("//*[@id=\"bibContent\"]/div/div/div/i")?.first
+        if countNode?.content == "找到1条记录 "{
+            return SearchResult(bookInfoArray: [[]], subheadTitle: ["结果唯一，直接进入",url])
+        }
+        //如果是未找到，返回空结果
+        if jiNode == nil{
+            return SearchResult(bookInfoArray: [[]], subheadTitle: [])
+        }
         
         var resultCount = 0
         //遍历数组
@@ -53,17 +131,31 @@ class LibraryVC: UIViewController {
                 let contentNode = jiNode![i].firstChild?.firstChild?.firstChild
                 if var contentNode = contentNode{
                     if contentNode.children.count >= 3{
+                        //如果没有给图的话,给一个默认的图
+                        var imageUrl = "http://2016.bookgo.com.cn/book/apiex/getbookimage/isbn/7506603756"
+                        if contentNode.children[2].children.count > 3{
+                            imageUrl = (contentNode.children[2].children[3].firstChild?.attributes["src"])!
+                        }
+                        //print("图片地址:\(imageUrl!)")
                         contentNode = contentNode.children[3]
                         let nextUrl = "http://ftp.lib.hust.edu.cn\((contentNode.children[1].firstChild?.attributes["href"])!)"
-                        print(nextUrl)
+                        //print(nextUrl)
                         let title = contentNode.children[1].content?.replacingOccurrences(of: "\n", with: "")
                         let infos = contentNode.children[3].content?.split(separator: "\n")
-                        //print("项目\(i)")
-                        let author = "\(infos![0])"
-                        let publish = "\(infos![1])"
-                        let bio = "\(infos![2])".contains("Website") ? "暂无简介":"\(infos![2])"
+                        //print("项目\n\(contentNode.children[3])")
+                        var author = "\(infos![0])"
+                        var publish = "\(infos![1])"
+                        var bio = (infos?.count)! >= 3 ? "\(infos![2])".contains("Website") ? "暂无简介":"\(infos![2])" : "暂无简介"
+                        //如果bio=="更多..."那么说明这个项目没有作者和出版物，那么我们要做出一些调整
+                        if bio == "更多..."{
+                            bio = author
+                            author = "暂无作者"
+                            publish = "暂无出版信息"
+                        }
                         
-                        let book = BookInfo(title: title!, author: author, publish: publish, bio: bio, nextUrl: nextUrl)
+                        author = author.replacingOccurrences(of: " ", with: "") == "" ? "暂无简介" : author
+                        publish = publish.replacingOccurrences(of: " ", with: "") == "" ? "暂无出版信息" : publish
+                        let book = BookInfo(title: title!, author: author, publish: publish, bio: bio, nextUrl: nextUrl, imageUrl: imageUrl)
                         doubleArray[doubleArrayOne].append(book)
                         //print(book.toString() + "\n")
                     }
@@ -77,17 +169,24 @@ class LibraryVC: UIViewController {
             }
         }
         
-        /*/打印数组看看
-        print("\n一重数组大小:\(doubleArray.count)\nn")
-        for i in 0..<doubleArray.count{
-            print("\n副标题:\(doubleArrayTitle[i])\n----------------")
-            for j in 0..<doubleArray[i].count{
-                print("\(i)-\(j):\n\(doubleArray[i][j].toString())")
-            }
-        }*/
+        //将最后的subhead上限变成50
+        if resultCount > 50{
+            var tempStr = doubleArrayTitle[doubleArrayTitle.count-1]
+            tempStr = tempStr.replacingCharacters(in: (tempStr.range(of: "-")?.upperBound)!...(tempStr.range(of: " 条记录")?.lowerBound)!, with: "50").replacingOccurrences(of: "条记录", with: " 条记录")
+            doubleArrayTitle[doubleArrayTitle.count-1] = tempStr
+        }
         
         let searchResult = SearchResult(bookInfoArray: doubleArray, subheadTitle: doubleArrayTitle)
         return searchResult
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let url = searchResult.bookInfoArray[indexPath.section][indexPath.row].nextUrl
+        let libraryNext = self.storyboard?.instantiateViewController(withIdentifier: "LibraryNext") as! LibraryNextVC
+        libraryNext.url = url
+        let backBtn = UIBarButtonItem()
+        backBtn.title = "返回"
+        self.navigationItem.backBarButtonItem = backBtn
+        self.navigationController?.pushViewController(libraryNext, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -111,12 +210,14 @@ class LibraryVC: UIViewController {
         var publish = ""
         var bio = ""
         var nextUrl = ""
-        init(title:String,author:String,publish:String,bio:String,nextUrl:String) {
+        var imageUrl = ""
+        init(title:String,author:String,publish:String,bio:String,nextUrl:String,imageUrl:String) {
             self.title = title
             self.author = author
             self.publish = publish
             self.bio = bio
             self.nextUrl = nextUrl
+            self.imageUrl = imageUrl
         }
         func toString() -> String{
             return "书名:\(title)\n作者:\(author)\n出版:\(publish)\n简介:\(bio)\n网址:\(nextUrl)"

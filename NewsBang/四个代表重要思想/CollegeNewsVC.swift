@@ -16,16 +16,33 @@ class CollegeNewsVC: UITableViewController {
     var pageCount = 1
     override func viewDidLoad() {
         super.viewDidLoad()
-        initParameters()
-        initFootView()
+        self.pleaseWait()
+        DispatchQueue.global().async {
+            if self.initParameters() == true{
+                DispatchQueue.main.async {
+                    self.initFootView(footStr: "没有内容")
+                    self.tableView.reloadData()
+                    self.clearAllNotice()
+                }
+            }else{
+                DispatchQueue.main.async {
+                    self.initFootView(footStr: "加载出错，请检查网络")
+                    //self.tableView.reloadData()
+                    self.clearAllNotice()
+                }
+            }
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-    func initParameters(){
+    func initParameters() -> Bool{
         let jiDoc = Ji(htmlURL: URL(string: pageUrl)!)
+        guard jiDoc != nil else {
+            return false
+        }
         var titleNode = jiDoc?.xPath("//*[@id=\"line_u8_0\"]/a")?.first
         var dateNode = jiDoc?.xPath("//*[@id=\"line_u8_0\"]/span")?.first
         var i = 0
@@ -49,14 +66,15 @@ class CollegeNewsVC: UITableViewController {
         let slicing = pageCountStr?.split(separator: "/")[1]
         pageCountStr = "\(slicing!)"
         self.pageCount = Int(pageCountStr!)!
-        print("pageCountStr:\(self.pageCount)")
+        //print("pageCountStr:\(self.pageCount)")
+        return true
     }
-    func initFootView(){
+    func initFootView(footStr:String){
         let footView = UIView()
         footView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: footViewHeight!)
         footView.backgroundColor = UIColor.white
         let view = UITextView()
-        view.text = "没有内容"
+        view.text = footStr
         view.font = UIFont.systemFont(ofSize: 8)
         view.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         view.sizeToFit()
@@ -70,19 +88,19 @@ class CollegeNewsVC: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return articleItems.count
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CollegeNewsCell
@@ -94,7 +112,7 @@ class CollegeNewsVC: UITableViewController {
             cell.bg.backgroundColor = #colorLiteral(red: 0.9529411765, green: 0.9529411765, blue: 0.9529411765, alpha: 1)
         }
         // Configure the cell...
-
+        
         return cell
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -149,49 +167,49 @@ class CollegeNewsVC: UITableViewController {
         }
     }
     /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
+     // Override to support conditional editing of the table view.
+     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the specified item to be editable.
+     return true
+     }
+     */
+    
     /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
+     // Override to support editing the table view.
+     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+     if editingStyle == .delete {
+     // Delete the row from the data source
+     tableView.deleteRows(at: [indexPath], with: .fade)
+     } else if editingStyle == .insert {
+     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+     }
+     }
+     */
+    
     /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
+     // Override to support rearranging the table view.
+     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+     
+     }
+     */
+    
     /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
+     // Override to support conditional rearranging of the table view.
+     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the item to be re-orderable.
+     return true
+     }
+     */
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
     struct ArticleItems {
         var name:String
         var date:String

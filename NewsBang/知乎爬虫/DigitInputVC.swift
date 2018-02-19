@@ -62,6 +62,12 @@ class DigitInputVC: UIViewController {
     @objc func beginCrawler(){
         let zhiHuCrawlerVC = self.storyboard?.instantiateViewController(withIdentifier: "ZhiHuCrawler") as! ZhiHuCrawlerVC
         zhiHuCrawlerVC.urlStr = "https://www.zhihu.com/question/\((numberLb.text)!)"
+        //设置浏览器标识，桌面版，方便抓取
+        let newAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/604.5.6 (KHTML, like Gecko) Version/11.0.3 Safari/604.5.6"
+        let dictionnary = [
+            "UserAgent" : newAgent
+        ]
+        UserDefaults.standard.register(defaults: dictionnary)
         
         let backBtn = UIBarButtonItem()
         backBtn.title = "返回"

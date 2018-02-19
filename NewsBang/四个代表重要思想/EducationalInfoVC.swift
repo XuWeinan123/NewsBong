@@ -16,16 +16,33 @@ class EducationalInfoVC: UITableViewController {
     var pageCount = 1
     override func viewDidLoad() {
         super.viewDidLoad()
-        initParameters()
-        initFootView()
+        //self.pleaseWait()
+        DispatchQueue.global().async {
+            if self.initParameters() == true{
+                DispatchQueue.main.async {
+                    self.initFootView(footStr: "没有内容")
+                    self.tableView.reloadData()
+                    //self.clearAllNotice()
+                }
+            }else{
+                DispatchQueue.main.async {
+                    self.initFootView(footStr: "加载出错，请检查网络")
+                    //self.tableView.reloadData()
+                    //self.clearAllNotice()
+                }
+            }
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-    func initParameters(){
+    func initParameters() -> Bool{
         let jiDoc = Ji(htmlURL: URL(string: pageUrl)!)
+        guard jiDoc != nil else {
+            return false
+        }
         var titleNode = jiDoc?.xPath("//*[@id=\"line_u8_0\"]/a")?.first
         var dateNode = jiDoc?.xPath("//*[@id=\"line_u8_0\"]/span")?.first
         var i = 0
@@ -49,14 +66,15 @@ class EducationalInfoVC: UITableViewController {
         let slicing = pageCountStr?.split(separator: "/")[1]
         pageCountStr = "\(slicing!)"
         self.pageCount = Int(pageCountStr!)!
-        print("pageCountStr:\(self.pageCount)")
+        //print("pageCountStr:\(self.pageCount)")
+        return true
     }
-    func initFootView(){
+    func initFootView(footStr:String){
         let footView = UIView()
         footView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: footViewHeight!)
         footView.backgroundColor = UIColor.white
         let view = UITextView()
-        view.text = "没有内容"
+        view.text = footStr
         view.font = UIFont.systemFont(ofSize: 8)
         view.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         view.sizeToFit()

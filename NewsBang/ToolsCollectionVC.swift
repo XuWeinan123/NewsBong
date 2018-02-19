@@ -41,14 +41,14 @@ class ToolsCollectionVC: UIViewController,UICollectionViewDelegate,UICollectionV
         toolImage.append(UIImage(named: "师资队伍")!)
         toolImage.append(UIImage(named: "番茄钟🍅")!)
         //toolImage.append(UIImage(named: "课程日历")!)
-        toolImage.append(UIImage(named: "红包口令")!)
+        //toolImage.append(UIImage(named: "红包口令")!)
         toolImage.append(UIImage(named: "去哪吃饭")!)
         toolImage.append(UIImage(named: "知乎爬虫")!)
-        toolImage.append(UIImage(named: "知乎爬虫")!)
+        toolImage.append(UIImage(named: "图书查询")!)
         toolName.append("教师名片")
         toolName.append("番茄时钟")
         //toolName.append("课程日历")
-        toolName.append("红包口令")
+        //toolName.append("红包口令")
         toolName.append("去哪吃饭")
         toolName.append("知乎爬虫")
         toolName.append("图书查询")
@@ -87,19 +87,19 @@ class ToolsCollectionVC: UIViewController,UICollectionViewDelegate,UICollectionV
             courseCalendarVC.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(courseCalendarVC, animated: true)*/
             self.noticeError("暂不可用", autoClear: true, autoClearTime: 1)*/
-        case 2:
+        /*case 2:
             let pasteboard = UIPasteboard.general
             pasteboard.string = "nKjLQL83bX"
-            self.noticeInfo("复制成功", autoClear: true, autoClearTime: 1)
-        case 3:
+            self.noticeInfo("复制成功", autoClear: true, autoClearTime: 1)*/
+        case 2:
             let zhuanpan = self.storyboard?.instantiateViewController(withIdentifier: "ZhuanPan") as! ZhuanPanVC
             zhuanpan.hidesBottomBarWhenPushed = true
             self.present(zhuanpan, animated: true, completion: nil)
-        case 4:
+        case 3:
             let digitInputVC = self.storyboard?.instantiateViewController(withIdentifier: "DigitInput") as! DigitInputVC
             digitInputVC.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(digitInputVC, animated: true)
-        case 5:
+        case 4:
             let libraryVC = self.storyboard?.instantiateViewController(withIdentifier: "Library") as! LibraryVC
             libraryVC.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(libraryVC, animated: true)

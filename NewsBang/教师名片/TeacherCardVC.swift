@@ -18,35 +18,41 @@ class TeacherCardVC: UIViewController,UICollectionViewDelegate,UICollectionViewD
     var boZhuPersons = [TeacherIndex]()
     var currentPersons = [TeacherIndex]()
     var layout = UICollectionViewFlowLayout()
-
+    
     @IBOutlet weak var teachersCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        initData()
-        //这部分等会放到一个线程里面去
-        xinWenPersons = initDataWithList(list: xinWenPersons)
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        DispatchQueue.global().async {
+            self.initData()
+            self.xinWenPersons = self.initDataWithList(list: self.xinWenPersons)
+            DispatchQueue.main.async {
+                self.setUI()
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
         //guangDianPersons = initDataWithList(list: guangDianPersons)
         //guangGaoPersons = initDataWithList(list: guangGaoPersons)
         //chuanBoPersons = initDataWithList(list: chuanBoPersons)
         //boZhuPersons = initDataWithList(list: boZhuPersons)
         
-        setUI()
+        
         /*/打印看看
-        for item in xinWenPersons {
-            item.toString()
-        }
-        for item in guangDianPersons {
-            item.toString()
-        }
-        for item in guangGaoPersons {
-            item.toString()
-        }
-        for item in chuanBoPersons {
-            item.toString()
-        }
-        for item in boZhuPersons {
-            item.toString()
-        }*/
+         for item in xinWenPersons {
+         item.toString()
+         }
+         for item in guangDianPersons {
+         item.toString()
+         }
+         for item in guangGaoPersons {
+         item.toString()
+         }
+         for item in chuanBoPersons {
+         item.toString()
+         }
+         for item in boZhuPersons {
+         item.toString()
+         }*/
         
         // Do any additional setup after loading the view.
     }
@@ -221,11 +227,11 @@ class TeacherCardVC: UIViewController,UICollectionViewDelegate,UICollectionViewD
             //print("加载网络图片：avatar:\(avatarUrl)")
             //加载网络图片，有空试试用ImageHelper
             /*do{
-                let url = URL.init(string: avatarUrl)
-                let netNsd = try Data.init(contentsOf: url!)
-                let netImg = UIImage.init(data: netNsd)
-                cell.avatar.image = netImg?.cropToSquare()
-            }catch{}*/
+             let url = URL.init(string: avatarUrl)
+             let netNsd = try Data.init(contentsOf: url!)
+             let netImg = UIImage.init(data: netNsd)
+             cell.avatar.image = netImg?.cropToSquare()
+             }catch{}*/
             cell.avatar.imageFromURL(avatarUrl, placeholder: UIImage.init(named: "缺省头像")!)
             cell.avatar.layer.cornerRadius = 4
         }else{
@@ -248,16 +254,16 @@ class TeacherCardVC: UIViewController,UICollectionViewDelegate,UICollectionViewD
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
     struct TeacherIndex {
         var name:String
         var part:Int
@@ -282,5 +288,5 @@ class TeacherCardVC: UIViewController,UICollectionViewDelegate,UICollectionViewD
             print("name:\(name)\npart:\(part)\nnumber:\(number)\nhref:\(href)\n")
         }
     }
-
+    
 }
