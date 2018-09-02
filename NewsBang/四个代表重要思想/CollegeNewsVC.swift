@@ -135,7 +135,7 @@ class CollegeNewsVC: UITableViewController {
         self.navigationController!.pushViewController(articlePage, animated: true)
     }
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y>scrollView.contentSize.height-self.view.frame.height+1{
+        if scrollView.conten·tOffset.y>scrollView.contentSize.height-self.view.frame.height+1{
             print("加载新数据")
             if pageCount > 1{
                 let tempUrl = pageUrl.replacingOccurrences(of: ".htm", with: "/\(pageCount-1).htm")

@@ -6,10 +6,10 @@ target 'NewsBang' do
   use_frameworks!
 
   # Pods for NewsBang
-  pod 'Alamofire'
+  #pod 'Alamofire'
   pod 'Ji'
-  pod 'AVOSCloud'
-  pod 'RadioButton'
+  pod 'AVOSCloud', '7.3.2'
+  #pod 'RadioButton'
   pod 'JJStockView'
   pod 'lottie-ios'
   

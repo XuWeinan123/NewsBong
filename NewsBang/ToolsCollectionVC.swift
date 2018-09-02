@@ -45,6 +45,7 @@ class ToolsCollectionVC: UIViewController,UICollectionViewDelegate,UICollectionV
         toolImage.append(UIImage(named: "去哪吃饭")!)
         toolImage.append(UIImage(named: "知乎爬虫")!)
         toolImage.append(UIImage(named: "图书查询")!)
+        toolImage.append(UIImage(named: "图书查询")!)
         toolName.append("教师名片")
         toolName.append("番茄时钟")
         //toolName.append("课程日历")
@@ -52,6 +53,7 @@ class ToolsCollectionVC: UIViewController,UICollectionViewDelegate,UICollectionV
         toolName.append("去哪吃饭")
         toolName.append("知乎爬虫")
         toolName.append("图书查询")
+        toolName.append("微博爬虫")
     }
 
     override func didReceiveMemoryWarning() {
@@ -103,6 +105,10 @@ class ToolsCollectionVC: UIViewController,UICollectionViewDelegate,UICollectionV
             let libraryVC = self.storyboard?.instantiateViewController(withIdentifier: "Library") as! LibraryVC
             libraryVC.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(libraryVC, animated: true)
+        case 5:
+            let weiBoCrawlerVC = self.storyboard?.instantiateViewController(withIdentifier: "WeiBoCrawlerVC3") as! WeiBoCrawlerVC3
+            weiBoCrawlerVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(weiBoCrawlerVC, animated: true)
         default: break
         }
     }

@@ -18,7 +18,8 @@ class PersonalInfoModifyVC: UIViewController,UIImagePickerControllerDelegate,UIN
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var nameLb: UILabel!
     @IBOutlet weak var numberLb: UILabel!
-    @IBOutlet weak var emailLb: UITextField!
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet var nameField: UITextField!
     
     @IBOutlet weak var changeAvatar: UIImageView!
     override func viewDidLoad() {
@@ -42,17 +43,25 @@ class PersonalInfoModifyVC: UIViewController,UIImagePickerControllerDelegate,UIN
         let rightBarItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveChanges))
         self.navigationItem.setRightBarButton(rightBarItem, animated: true)
         
+        //如果用户已经设置过用户名，则不显示nameField
+        if nameLb.text != "未设置用户名"{
+            nameField.isHidden = true
+        }
         // Do any additional setup after loading the view.
     }
     @objc func saveChanges(){
+        self.pleaseWait()
         let user = AVUser.current()
         if changeAvatar.alpha != 1{
             let avaData = UIImagePNGRepresentation(image.image!)
             let avaFile = AVFile(name: "ava.jpg", data: avaData!)
             user?["avatar"] = avaFile
         }
-        if emailLb.text != ""{
-            user?.email = emailLb.text
+        if emailField.text != ""{
+            user?.email = emailField.text
+        }
+        if nameField.text != ""{
+            user?["fullname"] = nameField.text!
         }
         user?.saveInBackground({ (success:Bool, error:Error?) in
             if success{
@@ -61,8 +70,10 @@ class PersonalInfoModifyVC: UIViewController,UIImagePickerControllerDelegate,UIN
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue:"reload"), object: nil)
                 self.navigationController?.popViewController(animated: true)
             }else{
+                self.noticeTop(error!.localizedDescription)
                 print("用户更新失败:\(error?.localizedDescription)")
             }
+            self.clearAllNotice()
         })
     }
     @objc func avatarChange(){

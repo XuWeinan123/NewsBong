@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fx4-2z-a9D">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fx4-2z-a9D">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -170,7 +169,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eLe-DS-qUV">
-                                <rect key="frame" x="130.66666666666666" y="424" width="152.99999999999997" height="24"/>
+                                <rect key="frame" x="130.66666666666663" y="424" width="153.33333333333337" height="24"/>
                                 <string key="text">请勿手动锁屏或将应用切换至后台
 什么都不要动就对了</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
@@ -209,6 +208,79 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4QE-yC-b3b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1809.375" y="-1589.7887323943662"/>
+        </scene>
+        <!--Wei Bo CrawlerVC2-->
+        <scene sceneID="QSf-LR-MMw">
+            <objects>
+                <viewController storyboardIdentifier="WeiBoCrawler" id="f37-tQ-vAQ" customClass="WeiBoCrawlerVC2" customModule="NewsBang" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cuh-qK-dh7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iir-7g-7K6">
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration" applicationNameForUserAgent="">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences" javaScriptEnabled="NO"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gJ-Rj-IN5">
+                                <rect key="frame" x="192" y="194" width="31" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="去重"/>
+                                <connections>
+                                    <action selector="deleteRepeats:" destination="f37-tQ-vAQ" eventType="touchUpInside" id="VuP-Bz-9nU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iFf-Rg-Kea">
+                                <rect key="frame" x="176" y="353" width="62" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="生成文件"/>
+                                <connections>
+                                    <action selector="genFile:" destination="f37-tQ-vAQ" eventType="touchUpInside" id="RNy-gv-cpa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDU-Xj-pow">
+                                <rect key="frame" x="176" y="271" width="62" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="获得用户"/>
+                                <connections>
+                                    <action selector="getUsersAction:" destination="f37-tQ-vAQ" eventType="touchUpInside" id="IT5-Sg-AHC"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="q9i-8n-23O" firstAttribute="trailing" secondItem="Iir-7g-7K6" secondAttribute="trailing" id="LB0-0X-J1n"/>
+                            <constraint firstItem="Iir-7g-7K6" firstAttribute="top" secondItem="q9i-8n-23O" secondAttribute="top" id="ddm-bH-MxB"/>
+                            <constraint firstItem="q9i-8n-23O" firstAttribute="bottom" secondItem="Iir-7g-7K6" secondAttribute="bottom" id="tVS-Lm-QMe"/>
+                            <constraint firstItem="Iir-7g-7K6" firstAttribute="leading" secondItem="q9i-8n-23O" secondAttribute="leading" id="zmd-UH-B2k"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="q9i-8n-23O"/>
+                    </view>
+                    <connections>
+                        <outlet property="getUsers" destination="SDU-Xj-pow" id="4Dw-mk-VfU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZiS-Xk-yXH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1806" y="-4922"/>
+        </scene>
+        <!--Wei Bo CrawlerVC3-->
+        <scene sceneID="RCX-wD-Gew">
+            <objects>
+                <viewController storyboardIdentifier="WeiBoCrawlerVC3" id="Z2q-rz-FGN" customClass="WeiBoCrawlerVC3" customModule="NewsBang" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Kia-Mn-DL9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Edj-O3-HCj"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5yG-Z0-omj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2266" y="-4922"/>
         </scene>
         <!--LibraryVC-->
         <scene sceneID="Zdq-8a-epZ">
@@ -2575,15 +2647,27 @@
                                             <constraint firstItem="KFw-qi-49H" firstAttribute="leading" secondItem="bGn-Zi-31f" secondAttribute="leading" constant="16" id="znb-cV-dJG"/>
                                         </constraints>
                                     </view>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="用户名（只能改一次）" textAlignment="natural" minimumFontSize="48" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="spQ-0o-hdB">
+                                        <rect key="frame" x="16" y="176" width="382" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="2Rj-yc-e5e"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="bGn-Zi-31f" secondAttribute="trailing" id="2Fh-pm-wFB"/>
                                     <constraint firstItem="f8O-Hs-BXi" firstAttribute="width" secondItem="bGn-Zi-31f" secondAttribute="width" constant="-32" id="6rf-bp-CBu"/>
                                     <constraint firstItem="bGn-Zi-31f" firstAttribute="leading" secondItem="c2J-Jc-CgW" secondAttribute="leading" id="Ba0-Lx-b8H"/>
                                     <constraint firstItem="f8O-Hs-BXi" firstAttribute="centerX" secondItem="c2J-Jc-CgW" secondAttribute="centerX" id="DbU-lN-Jod"/>
+                                    <constraint firstItem="spQ-0o-hdB" firstAttribute="leading" secondItem="c2J-Jc-CgW" secondAttribute="leading" constant="16" id="POm-24-Rmu"/>
                                     <constraint firstAttribute="bottom" secondItem="f8O-Hs-BXi" secondAttribute="bottom" constant="32" id="Tbf-60-Qnp"/>
                                     <constraint firstItem="bGn-Zi-31f" firstAttribute="top" secondItem="c2J-Jc-CgW" secondAttribute="top" id="Ugj-bW-nH8"/>
                                     <constraint firstItem="f8O-Hs-BXi" firstAttribute="top" secondItem="bGn-Zi-31f" secondAttribute="bottom" constant="28" id="eek-ko-eyV"/>
+                                    <constraint firstAttribute="trailing" secondItem="spQ-0o-hdB" secondAttribute="trailing" constant="16" id="ikK-BF-Gs4"/>
+                                    <constraint firstItem="spQ-0o-hdB" firstAttribute="top" secondItem="f8O-Hs-BXi" secondAttribute="bottom" constant="28" id="pQ9-ib-ogg"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -2599,8 +2683,9 @@
                     </view>
                     <connections>
                         <outlet property="changeAvatar" destination="KFw-qi-49H" id="hVt-Rz-2Fc"/>
-                        <outlet property="emailLb" destination="f8O-Hs-BXi" id="hyU-18-Res"/>
+                        <outlet property="emailField" destination="f8O-Hs-BXi" id="s44-Dz-XEV"/>
                         <outlet property="image" destination="JKM-CC-Geq" id="hcB-ej-8MF"/>
+                        <outlet property="nameField" destination="spQ-0o-hdB" id="jbG-fN-Vfk"/>
                         <outlet property="nameLb" destination="Kjq-Ss-XNc" id="0Dq-bj-Hje"/>
                         <outlet property="numberLb" destination="0rl-5k-wLe" id="37K-dl-4EH"/>
                     </connections>

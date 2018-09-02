@@ -1,0 +1,363 @@
+
+/* Class = "UILabel"; text = "12345678@90.com"; ObjectID = "0rl-5k-wLe"; */
+"0rl-5k-wLe.text" = "12345678@90.com";
+
+/* Class = "UILabel"; text = "12345678@90.com"; ObjectID = "1ta-Oo-SGI"; */
+"1ta-Oo-SGI.text" = "12345678@90.com";
+
+/* Class = "UILabel"; text = "加载网页中…"; ObjectID = "2X9-Jz-Vva"; */
+"2X9-Jz-Vva.text" = "加载网页中…";
+
+/* Class = "UITextField"; placeholder = "密码"; ObjectID = "47h-7T-oMR"; */
+"47h-7T-oMR.placeholder" = "密码";
+
+/* Class = "UILabel"; text = "分享给其他用户"; ObjectID = "4C3-4y-XIg"; */
+"4C3-4y-XIg.text" = "分享给其他用户";
+
+/* Class = "UINavigationItem"; title = "新闻"; ObjectID = "4SY-Ge-AP8"; */
+"4SY-Ge-AP8.title" = "新闻";
+
+/* Class = "UILabel"; text = "12"; ObjectID = "4TY-8w-eCZ"; */
+"4TY-8w-eCZ.text" = "12";
+
+/* Class = "UILabel"; text = "username"; ObjectID = "67X-nh-1gi"; */
+"67X-nh-1gi.text" = "username";
+
+/* Class = "UILabel"; text = "25:00"; ObjectID = "6b0-PM-MKp"; */
+"6b0-PM-MKp.text" = "25:00";
+
+/* Class = "UINavigationItem"; title = "个人中心"; ObjectID = "7hL-Kh-uyX"; */
+"7hL-Kh-uyX.title" = "个人中心";
+
+/* Class = "UILabel"; text = "(0/+∞)"; ObjectID = "7oS-76-r9R"; */
+"7oS-76-r9R.text" = "(0/+∞)";
+
+/* Class = "UIButton"; normalTitle = "添加至日历"; ObjectID = "7uY-3h-ZVb"; */
+"7uY-3h-ZVb.normalTitle" = "添加至日历";
+
+/* Class = "UISegmentedControl"; 7yh-WD-D2i.segmentTitles[0] = "新闻"; ObjectID = "7yh-WD-D2i"; */
+"7yh-WD-D2i.segmentTitles[0]" = "新闻";
+
+/* Class = "UISegmentedControl"; 7yh-WD-D2i.segmentTitles[1] = "广电"; ObjectID = "7yh-WD-D2i"; */
+"7yh-WD-D2i.segmentTitles[1]" = "广电";
+
+/* Class = "UISegmentedControl"; 7yh-WD-D2i.segmentTitles[2] = "广告"; ObjectID = "7yh-WD-D2i"; */
+"7yh-WD-D2i.segmentTitles[2]" = "广告";
+
+/* Class = "UISegmentedControl"; 7yh-WD-D2i.segmentTitles[3] = "传播"; ObjectID = "7yh-WD-D2i"; */
+"7yh-WD-D2i.segmentTitles[3]" = "传播";
+
+/* Class = "UISegmentedControl"; 7yh-WD-D2i.segmentTitles[4] = "播主"; ObjectID = "7yh-WD-D2i"; */
+"7yh-WD-D2i.segmentTitles[4]" = "播主";
+
+/* Class = "UILabel"; text = "中文图书阅览室（C区2楼，3楼，5楼）"; ObjectID = "8PQ-eR-tg4"; */
+"8PQ-eR-tg4.text" = "中文图书阅览室（C区2楼，3楼，5楼）";
+
+/* Class = "UITabBarItem"; title = "我的"; ObjectID = "94m-XB-SKF"; */
+"94m-XB-SKF.title" = "我的";
+
+/* Class = "UILabel"; text = "点小桌子开始"; ObjectID = "9JJ-cO-YpY"; */
+"9JJ-cO-YpY.text" = "点小桌子开始";
+
+/* Class = "UILabel"; text = "输入问题编号"; ObjectID = "9r4-17-x71"; */
+"9r4-17-x71.text" = "输入问题编号";
+
+/* Class = "UIButton"; normalTitle = "四"; ObjectID = "B0g-rz-jK0"; */
+"B0g-rz-jK0.normalTitle" = "四";
+
+/* Class = "UILabel"; text = "作者"; ObjectID = "BLS-rQ-8z0"; */
+"BLS-rQ-8z0.text" = "作者";
+
+/* Class = "UILabel"; text = "2015-10-10"; ObjectID = "BnD-L3-DE2"; */
+"BnD-L3-DE2.text" = "2015-10-10";
+
+/* Class = "UISearchBar"; placeholder = "搜索图书"; ObjectID = "BoP-JI-1Op"; */
+"BoP-JI-1Op.placeholder" = "搜索图书";
+
+/* Class = "UIButton"; normalTitle = "忘记密码"; ObjectID = "C99-cg-2TA"; */
+"C99-cg-2TA.normalTitle" = "忘记密码";
+
+/* Class = "UILabel"; text = "时间"; ObjectID = "CYi-lM-o1B"; */
+"CYi-lM-o1B.text" = "时间";
+
+/* Class = "UILabel"; text = "5"; ObjectID = "D9o-BR-gub"; */
+"D9o-BR-gub.text" = "5";
+
+/* Class = "UILabel"; text = "6"; ObjectID = "DNE-El-Tbh"; */
+"DNE-El-Tbh.text" = "6";
+
+/* Class = "UIButton"; normalTitle = "发送"; ObjectID = "DRE-0B-38y"; */
+"DRE-0B-38y.normalTitle" = "发送";
+
+/* Class = "UILabel"; text = "意见反馈"; ObjectID = "Dgm-zR-Zfa"; */
+"Dgm-zR-Zfa.text" = "意见反馈";
+
+/* Class = "UILabel"; text = "文章名称"; ObjectID = "EOS-lP-j7A"; */
+"EOS-lP-j7A.text" = "文章名称";
+
+/* Class = "UIViewController"; title = "番茄钟"; ObjectID = "Eja-kl-fzR"; */
+"Eja-kl-fzR.title" = "番茄钟";
+
+/* Class = "UITextField"; placeholder = "重复密码"; ObjectID = "EwO-6p-8qJ"; */
+"EwO-6p-8qJ.placeholder" = "重复密码";
+
+/* Class = "UILabel"; text = "2015-10-10"; ObjectID = "FxB-sH-3sD"; */
+"FxB-sH-3sD.text" = "2015-10-10";
+
+/* Class = "UILabel"; text = "I247.7 1915A"; ObjectID = "G9J-ol-8ld"; */
+"G9J-ol-8ld.text" = "I247.7 1915A";
+
+/* Class = "UIButton"; normalTitle = "二"; ObjectID = "HD9-og-Oi9"; */
+"HD9-og-Oi9.normalTitle" = "二";
+
+/* Class = "UIButton"; normalTitle = "注册"; ObjectID = "He7-xy-17Q"; */
+"He7-xy-17Q.normalTitle" = "注册";
+
+/* Class = "UIButton"; highlightedTitle = "注册"; ObjectID = "Hxm-Wk-Zna"; */
+"Hxm-Wk-Zna.highlightedTitle" = "注册";
+
+/* Class = "UIButton"; normalTitle = "注册"; ObjectID = "Hxm-Wk-Zna"; */
+"Hxm-Wk-Zna.normalTitle" = "注册";
+
+/* Class = "UIButton"; selectedTitle = "登录"; ObjectID = "Hxm-Wk-Zna"; */
+"Hxm-Wk-Zna.selectedTitle" = "登录";
+
+/* Class = "UINavigationController"; title = "主页"; ObjectID = "IIM-AW-zvH"; */
+"IIM-AW-zvH.title" = "主页";
+
+/* Class = "UILabel"; text = "使用前请先设置开学日期"; ObjectID = "IcE-NO-VDp"; */
+"IcE-NO-VDp.text" = "使用前请先设置开学日期";
+
+/* Class = "UIButton"; normalTitle = "三"; ObjectID = "If0-V9-3Ex"; */
+"If0-V9-3Ex.normalTitle" = "三";
+
+/* Class = "UIViewController"; title = "馆藏信息"; ObjectID = "J6b-oU-gbG"; */
+"J6b-oU-gbG.title" = "馆藏信息";
+
+/* Class = "UILabel"; text = "选择年级与专业，将相应课表添加至日历"; ObjectID = "Jjo-gi-yCm"; */
+"Jjo-gi-yCm.text" = "选择年级与专业，将相应课表添加至日历";
+
+/* Class = "UIViewController"; title = "课程日历"; ObjectID = "Juj-JP-uT8"; */
+"Juj-JP-uT8.title" = "课程日历";
+
+/* Class = "UILabel"; text = "你的名字。"; ObjectID = "Kjq-Ss-XNc"; */
+"Kjq-Ss-XNc.text" = "你的名字。";
+
+/* Class = "UIButton"; highlightedTitle = "关闭"; ObjectID = "Kl7-9p-Ojl"; */
+"Kl7-9p-Ojl.highlightedTitle" = "关闭";
+
+/* Class = "UIButton"; normalTitle = "关闭"; ObjectID = "Kl7-9p-Ojl"; */
+"Kl7-9p-Ojl.normalTitle" = "关闭";
+
+/* Class = "UIButton"; selectedTitle = "登录"; ObjectID = "Kl7-9p-Ojl"; */
+"Kl7-9p-Ojl.selectedTitle" = "登录";
+
+/* Class = "UILabel"; text = "你的名字。"; ObjectID = "MTk-RX-gw7"; */
+"MTk-RX-gw7.text" = "你的名字。";
+
+/* Class = "UILabel"; text = "关于应用"; ObjectID = "N6A-Mh-V7r"; */
+"N6A-Mh-V7r.text" = "关于应用";
+
+/* Class = "UILabel"; text = "11"; ObjectID = "NN8-64-2MA"; */
+"NN8-64-2MA.text" = "11";
+
+/* Class = "UILabel"; text = "2015-10-10"; ObjectID = "OfC-a7-rfe"; */
+"OfC-a7-rfe.text" = "2015-10-10";
+
+/* Class = "UILabel"; text = "0.00%"; ObjectID = "On9-Lp-erL"; */
+"On9-Lp-erL.text" = "0.00%";
+
+/* Class = "UILabel"; text = "2015-10-10"; ObjectID = "Pis-HD-rOY"; */
+"Pis-HD-rOY.text" = "2015-10-10";
+
+/* Class = "UINavigationItem"; title = "工具"; ObjectID = "QOx-vA-6r1"; */
+"QOx-vA-6r1.title" = "工具";
+
+/* Class = "UILabel"; text = "9"; ObjectID = "QUJ-kA-YfI"; */
+"QUJ-kA-YfI.text" = "9";
+
+/* Class = "UITextField"; placeholder = "上课地点"; ObjectID = "Qda-hA-qpV"; */
+"Qda-hA-qpV.placeholder" = "上课地点";
+
+/* Class = "UILabel"; text = "2015-10-10"; ObjectID = "RhU-ua-KLJ"; */
+"RhU-ua-KLJ.text" = "2015-10-10";
+
+/* Class = "UILabel"; text = "个人信息"; ObjectID = "SBj-cm-wPl"; */
+"SBj-cm-wPl.text" = "个人信息";
+
+/* Class = "UILabel"; text = "默认在十月八号更改秋季作息时间，五月三号更改夏季作息时间"; ObjectID = "SeY-Dr-6sD"; */
+"SeY-Dr-6sD.text" = "默认在十月八号更改秋季作息时间，五月三号更改夏季作息时间";
+
+/* Class = "UILabel"; text = "起始日期即该学期第一周的周一，请务必保持准确"; ObjectID = "TT7-wn-ds9"; */
+"TT7-wn-ds9.text" = "起始日期即该学期第一周的周一，请务必保持准确";
+
+/* Class = "UILabel"; text = "3"; ObjectID = "UdB-ke-9qb"; */
+"UdB-ke-9qb.text" = "3";
+
+/* Class = "UILabel"; text = "名称"; ObjectID = "VY3-z1-D7y"; */
+"VY3-z1-D7y.text" = "名称";
+
+/* Class = "UIButton"; normalTitle = "一"; ObjectID = "Vnl-X4-Xha"; */
+"Vnl-X4-Xha.normalTitle" = "一";
+
+/* Class = "UILabel"; text = "001100857334"; ObjectID = "WoX-MA-x3F"; */
+"WoX-MA-x3F.text" = "001100857334";
+
+/* Class = "UILabel"; text = "7"; ObjectID = "XpF-9e-jEy"; */
+"XpF-9e-jEy.text" = "7";
+
+/* Class = "UITabBarItem"; title = "新闻"; ObjectID = "YKh-6o-Hj9"; */
+"YKh-6o-Hj9.title" = "新闻";
+
+/* Class = "UIButton"; disabledTitle = "未选择"; ObjectID = "Yia-Bv-33G"; */
+"Yia-Bv-33G.disabledTitle" = "未选择";
+
+/* Class = "UIButton"; normalTitle = "手动添加"; ObjectID = "Yia-Bv-33G"; */
+"Yia-Bv-33G.normalTitle" = "手动添加";
+
+/* Class = "UITabBarItem"; title = "工具"; ObjectID = "YqO-sM-W9A"; */
+"YqO-sM-W9A.title" = "工具";
+
+/* Class = "UITextField"; placeholder = "学号"; ObjectID = "ZVl-pe-dJb"; */
+"ZVl-pe-dJb.placeholder" = "学号";
+
+/* Class = "UITextField"; placeholder = "上课老师"; ObjectID = "Zcf-hd-JGH"; */
+"Zcf-hd-JGH.placeholder" = "上课老师";
+
+/* Class = "UILabel"; text = "书名"; ObjectID = "ZsI-Rz-O9g"; */
+"ZsI-Rz-O9g.text" = "书名";
+
+/* Class = "UILabel"; text = "年级"; ObjectID = "aCx-uW-HIC"; */
+"aCx-uW-HIC.text" = "年级";
+
+/* Class = "UILabel"; text = "名称"; ObjectID = "ajg-h7-LH3"; */
+"ajg-h7-LH3.text" = "名称";
+
+/* Class = "UILabel"; text = "我的收藏"; ObjectID = "bbi-yW-hLD"; */
+"bbi-yW-hLD.text" = "我的收藏";
+
+/* Class = "UILabel"; text = "名号暂无"; ObjectID = "bdK-qK-Bzd"; */
+"bdK-qK-Bzd.text" = "名号暂无";
+
+/* Class = "UILabel"; text = "4"; ObjectID = "bxL-h9-sFs"; */
+"bxL-h9-sFs.text" = "4";
+
+/* Class = "UIButton"; normalTitle = "传播"; ObjectID = "c88-48-KfE"; */
+"c88-48-KfE.normalTitle" = "传播";
+
+/* Class = "UILabel"; text = "2"; ObjectID = "chZ-3S-7af"; */
+"chZ-3S-7af.text" = "2";
+
+/* Class = "UILabel"; text = "文章名称"; ObjectID = "clA-UM-T3D"; */
+"clA-UM-T3D.text" = "文章名称";
+
+/* Class = "UILabel"; text = "请勿手动锁屏或将应用切换至后台\n什么都不要动就对了"; ObjectID = "eLe-DS-qUV"; */
+"eLe-DS-qUV.text" = "请勿手动锁屏或将应用切换至后台\n什么都不要动就对了";
+
+/* Class = "UITextField"; placeholder = "邮箱（重置密码）"; ObjectID = "f8O-Hs-BXi"; */
+"f8O-Hs-BXi.placeholder" = "邮箱（重置密码）";
+
+/* Class = "UILabel"; text = "到期 03-01-18"; ObjectID = "fIP-jG-Jhv"; */
+"fIP-jG-Jhv.text" = "到期 03-01-18";
+
+/* Class = "UIViewController"; title = "主页"; ObjectID = "fiq-kl-0Pp"; */
+"fiq-kl-0Pp.title" = "主页";
+
+/* Class = "UILabel"; text = "年级"; ObjectID = "flW-sa-npm"; */
+"flW-sa-npm.text" = "年级";
+
+/* Class = "UILabel"; text = "content"; ObjectID = "gDd-0I-adv"; */
+"gDd-0I-adv.text" = "content";
+
+/* Class = "UITextField"; placeholder = "课程名"; ObjectID = "gFs-9e-iip"; */
+"gFs-9e-iip.placeholder" = "课程名";
+
+/* Class = "UITextField"; placeholder = "密码"; ObjectID = "geL-LX-1tt"; */
+"geL-LX-1tt.placeholder" = "密码";
+
+/* Class = "UIButton"; normalTitle = "选择星期"; ObjectID = "h9F-7g-9kB"; */
+"h9F-7g-9kB.normalTitle" = "选择星期";
+
+/* Class = "UIButton"; normalTitle = "离线模式>>"; ObjectID = "hOD-X2-KU1"; */
+"hOD-X2-KU1.normalTitle" = "离线模式>>";
+
+/* Class = "UILabel"; text = "联系方式暂无"; ObjectID = "iZ8-35-7Zx"; */
+"iZ8-35-7Zx.text" = "联系方式暂无";
+
+/* Class = "UIButton"; highlightedTitle = "登录"; ObjectID = "mAY-XD-BE3"; */
+"mAY-XD-BE3.highlightedTitle" = "登录";
+
+/* Class = "UIButton"; normalTitle = "登录"; ObjectID = "mAY-XD-BE3"; */
+"mAY-XD-BE3.normalTitle" = "登录";
+
+/* Class = "UIButton"; selectedTitle = "登录"; ObjectID = "mAY-XD-BE3"; */
+"mAY-XD-BE3.selectedTitle" = "登录";
+
+/* Class = "UILabel"; text = "文章名称"; ObjectID = "nPA-rL-RS2"; */
+"nPA-rL-RS2.text" = "文章名称";
+
+/* Class = "UILabel"; text = "News Bang !"; ObjectID = "nTi-80-pym"; */
+"nTi-80-pym.text" = "News Bang !";
+
+/* Class = "UITextField"; placeholder = "学号"; ObjectID = "nZ0-47-mHg"; */
+"nZ0-47-mHg.placeholder" = "学号";
+
+/* Class = "UIViewController"; title = "概览"; ObjectID = "ndj-vm-qW7"; */
+"ndj-vm-qW7.title" = "概览";
+
+/* Class = "UIViewController"; title = "高级设置"; ObjectID = "oX8-m6-izs"; */
+"oX8-m6-izs.title" = "高级设置";
+
+/* Class = "UITabBarItem"; title = "新闻"; ObjectID = "p40-01-BkH"; */
+"p40-01-BkH.title" = "新闻";
+
+/* Class = "UILabel"; text = "出版社"; ObjectID = "pss-HX-W3F"; */
+"pss-HX-W3F.text" = "出版社";
+
+/* Class = "UILabel"; text = "1"; ObjectID = "rPD-I4-PTa"; */
+"rPD-I4-PTa.text" = "1";
+
+/* Class = "UILabel"; text = "标题"; ObjectID = "rwu-yl-ifI"; */
+"rwu-yl-ifI.text" = "标题";
+
+/* Class = "UILabel"; text = "8"; ObjectID = "sbg-1Y-FvJ"; */
+"sbg-1Y-FvJ.text" = "8";
+
+/* Class = "UILabel"; text = "10"; ObjectID = "soZ-RS-V8v"; */
+"soZ-RS-V8v.text" = "10";
+
+/* Class = "UITextField"; placeholder = "用户名（只能改一次）"; ObjectID = "spQ-0o-hdB"; */
+"spQ-0o-hdB.placeholder" = "用户名（只能改一次）";
+
+/* Class = "UILabel"; text = "第几节课开始到第几节课结束"; ObjectID = "tiJ-v9-0Cx"; */
+"tiJ-v9-0Cx.text" = "第几节课开始到第几节课结束";
+
+/* Class = "UIViewController"; title = "工具"; ObjectID = "tor-e7-GbM"; */
+"tor-e7-GbM.title" = "工具";
+
+/* Class = "UILabel"; text = "起始日期："; ObjectID = "u4F-z0-bV5"; */
+"u4F-z0-bV5.text" = "起始日期：";
+
+/* Class = "UIButton"; normalTitle = "强行终止"; ObjectID = "uVW-Cb-9nO"; */
+"uVW-Cb-9nO.normalTitle" = "强行终止";
+
+/* Class = "UILabel"; text = "文章名称"; ObjectID = "vgQ-ZH-62A"; */
+"vgQ-ZH-62A.text" = "文章名称";
+
+/* Class = "UIButton"; normalTitle = "选择周次"; ObjectID = "w4u-GW-4mu"; */
+"w4u-GW-4mu.normalTitle" = "选择周次";
+
+/* Class = "UILabel"; text = "简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介"; ObjectID = "xHR-x7-R8E"; */
+"xHR-x7-R8E.text" = "简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介";
+
+/* Class = "UILabel"; text = "文章名称"; ObjectID = "y3b-oC-IMI"; */
+"y3b-oC-IMI.text" = "文章名称";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "yX9-eb-FeN"; */
+"yX9-eb-FeN.text" = "Name";
+
+/* Class = "UIViewController"; title = "教师名片"; ObjectID = "zDR-h3-cYT"; */
+"zDR-h3-cYT.title" = "教师名片";
+
+/* Class = "UIButton"; normalTitle = "登出"; ObjectID = "zIW-2w-efd"; */
+"zIW-2w-efd.normalTitle" = "登出";
